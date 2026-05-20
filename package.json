@@ -1,11 +1,11 @@
 {
-  "name": "sweet-workshop",
+  "name": "sweet-deploy-team",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/sweet-workshop/",
+    "build": "vite build --base=/sweet-deploy-team/",
     "preview": "vite preview"
   },
   "devDependencies": {
