@@ -34,7 +34,7 @@ function renderCards(items) {
           <p class="dessert-price">${price} грн</p>
           <button class="dessert-modal-btn" data-id="${_id}">
             <svg class="btn-open-modal-icon" width="24" height="24" aria-label="open full product">
-              <use href="./public/icons.svg#icon-arrow_outward"></use>
+              <use href="${import.meta.env.BASE_URL}img/icons.svg#icon-arrow_outward"></use>
             </svg>
           </button>
         </div>
