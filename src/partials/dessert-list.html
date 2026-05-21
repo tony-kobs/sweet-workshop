@@ -1,0 +1,29 @@
+<section class="dessert-list-section">
+  <div class="container">
+    <div class="desert-top-row">
+      <div class="dessert-title-wrapper">
+        <h2 class="dessert-list-title">Солодощі</h2>
+        <p class="dessert-list-subtitle">
+          Спробуйте наші смачні десерти, які вас здивують!
+        </p>
+      </div>
+      <div class="dessert-list-category-desktop" id="category-desktop"></div>
+      <div class="dessert-list-category-mobile">
+        <select name="desserts-category" id="category-mobile">
+          <option value="all" selected>Всі десерти</option>
+        </select>
+        <svg class="select-icon" width="24" height="24">
+          <use href="/img/icons.svg#icon-keyboard_arrow_down"></use>
+        </svg>
+      </div>
+    </div>
+    <div class="dessert-list-wrapper">
+      <ul class="dessert-list" id="dessert-list"></ul>
+    </div>
+    <div class="dessert-list-button-container">
+      <button class="js-load-more load-more-hidden" id="load-more-btn">
+        Завантажити ще
+      </button>
+    </div>
+  </div>
+</section>
