@@ -16,7 +16,8 @@ const api = axios.create({
 });
 
 // ── Desserts ──────────────────────────────────────────────
-export const fetchDesserts = () => api.get(END_POINT_DESSERTS);
+export const fetchDesserts = (params = {}) =>
+  api.get(END_POINT_DESSERTS, { params });
 
 export const fetchDessertById = id =>
   api.get(END_POINT_DESSERTS_ID.replace('{id}', id));
