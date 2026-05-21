@@ -19,7 +19,7 @@ import{a as b}from"./assets/vendor-BoNCB7p8.js";(function(){const o=document.cre
           <p class="dessert-price">${h} грн</p>
           <button class="dessert-modal-btn" data-id="${r}">
             <svg class="btn-open-modal-icon" width="24" height="24" aria-label="open full product">
-              <use href="/public/icons.svg#icon-arrow_outward"></use>
+              <use href="/icons.svg#icon-arrow_outward"></use>
             </svg>
           </button>
         </div>
