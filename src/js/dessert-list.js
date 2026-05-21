@@ -1,4 +1,5 @@
 import { fetchDesserts, fetchCategories } from './services/api/api.js';
+import iconsUrl from '../img/icons.svg';
 
 const ITEMS_PER_PAGE = 8;
 let currentPage = 1;
@@ -34,7 +35,7 @@ function renderCards(items) {
           <p class="dessert-price">${price} грн</p>
           <button class="dessert-modal-btn" data-id="${_id}">
             <svg class="btn-open-modal-icon" width="24" height="24" aria-label="open full product">
-              <use href="/icons.svg#icon-arrow_outward"></use>
+              <use href="${iconsUrl}#icon-arrow_outward"></use>
             </svg>
           </button>
         </div>
