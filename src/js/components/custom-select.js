@@ -93,7 +93,7 @@ export class CustomSelect {
     this._box.setAttribute('aria-expanded', 'false');
   }
 
-  _select(value, label) {
+  _select(value, label, triggerChange = true) {
     this._opts.forEach(o => o.classList.remove('selected'));
     const opt = this.container.querySelector(`[data-value="${value}"]`);
     if (opt) opt.classList.add('selected');
@@ -102,7 +102,7 @@ export class CustomSelect {
     this._label.classList.remove('sel-placeholder');
     this.selected = { value, label };
 
-    if (this.onChange) this.onChange(value, label);
+    if (triggerChange && this.onChange) this.onChange(value, label);
   }
 
   // Публічні методи
@@ -112,7 +112,7 @@ export class CustomSelect {
 
   setValue(value) {
     const opt = this.options.find(o => o.value === value);
-    if (opt) this._select(opt.value, opt.label);
+    if (opt) this._select(opt.value, opt.label, false);
   }
 
   reset() {

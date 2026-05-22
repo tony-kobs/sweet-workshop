@@ -144,6 +144,7 @@ async function init() {
     await loadDesserts();
     loadMoreBtn.classList.remove('load-more-hidden');
   } catch (error) {
+    console.error(error);
     showErrorToast('Щось пішло не так. Спробуйте пізніше!');
   } finally {
     hideLoader();
