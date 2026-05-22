@@ -17,44 +17,8 @@
 }
 
 .dessert-list-category-mobile {
-  position: relative;
-  border: 2px solid var(--color-neutral-darker);
-  border-radius: 6px;
-  padding: 8px 12px;
   margin-top: 40px;
   width: 100%;
-
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--color-scheme-1-text);
-
-  background: var(--opacity-transparent);
-}
-
-.dessert-list-category-mobile select {
-  border: none;
-  appearance: none;
-  background-color: transparent;
-  width: 100%;
-
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--color-scheme-1-text);
-}
-
-.dessert-list-category-mobile select:focus-visible {
-  outline: none;
-}
-
-.select-icon {
-  position: absolute;
-  right: 12px;
-  fill: #080c0c;
-  fill-opacity: 0.6;
 }
 
 .dessert-list-wrapper {

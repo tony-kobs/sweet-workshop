@@ -2,6 +2,9 @@ import { fetchDesserts, fetchCategories } from './services/api/api.js';
 import { showLoader, hideLoader } from './utils/loader.js';
 import { showErrorToast } from './utils/toast.js';
 import iconsUrl from '../img/icons.svg';
+import { CustomSelect } from './components/custom-select.js';
+
+let mobileSelect = null;
 
 const ITEMS_PER_PAGE = 8;
 
@@ -59,20 +62,30 @@ function renderCategories(categories) {
     </label>`,
     ...categories.map(
       ({ _id, name }) => `
-    <label class="category-btn">
-      <input type="radio" name="category" value="${_id}" hidden />
-      ${name}
-    </label>`
+      <label class="category-btn">
+        <input type="radio" name="category" value="${_id}" hidden />
+        ${name}
+      </label>`
     ),
   ].join('');
 
   categoryDesktop.innerHTML = radioMarkup;
 
-  const optionMarkup = categories
-    .map(({ _id, name }) => `<option value="${_id}">${name}</option>`)
-    .join('');
+  const options = [
+    { value: 'all', label: 'Всі десерти', checked: true },
+    ...categories.map(({ _id, name }) => ({ value: _id, label: name })),
+  ];
 
-  categoryMobile.insertAdjacentHTML('beforeend', optionMarkup);
+  mobileSelect = new CustomSelect(categoryMobile, {
+    placeholder: 'Оберіть категорію',
+    options,
+    onChange: async value => {
+      currentCategory = value;
+      await loadDesserts(true);
+    },
+  });
+
+  mobileSelect.setValue('all');
 }
 
 async function loadDesserts(reset = false) {
@@ -110,11 +123,9 @@ loadMoreBtn.addEventListener('click', async () => {
 categoryDesktop.addEventListener('change', async e => {
   if (e.target.name !== 'category') return;
   currentCategory = e.target.value;
-  await loadDesserts(true);
-});
 
-categoryMobile.addEventListener('change', async e => {
-  currentCategory = e.target.value;
+  if (mobileSelect) mobileSelect.setValue(currentCategory);
+
   await loadDesserts(true);
 });
 
