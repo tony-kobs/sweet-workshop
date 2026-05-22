@@ -1,5 +1,6 @@
 import { fetchDesserts, fetchCategories } from './services/api/api.js';
 import { showLoader, hideLoader } from './utils/loader.js';
+import { showErrorToast } from './utils/toast.js';
 import iconsUrl from '../img/icons.svg';
 
 const ITEMS_PER_PAGE = 8;
@@ -95,8 +96,7 @@ async function loadDesserts(reset = false) {
     const loaded = currentPage * ITEMS_PER_PAGE;
     loadMoreBtn.classList.toggle('load-more-hidden', loaded >= totalItems);
   } catch (error) {
-    console.error('Помилка завантаження десертів:', error);
-    listEl.innerHTML = `<li class="error-message">Не вдалося завантажити десерти</li>`;
+    showErrorToast('Не вдалося завантажити десерти');
   } finally {
     hideLoader();
   }
@@ -133,8 +133,7 @@ async function init() {
     await loadDesserts();
     loadMoreBtn.classList.remove('load-more-hidden');
   } catch (error) {
-    console.error('Помилка ініціалізації:', error);
-    listEl.innerHTML = `<li class="error-message">Щось пішло не так</li>`;
+    showErrorToast('Щось пішло не так. Спробуйте пізніше!');
   } finally {
     hideLoader();
   }
