@@ -1,0 +1,190 @@
+.about-us {
+    padding: 64px 0;
+    display: flex;
+    align-items: center;
+}
+
+.about-us-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+.about-us-content {
+    max-width: 768px;
+}
+
+.about-us-title {
+    font-size: 42px;
+    margin-bottom: 24px;
+    margin-top: 0;
+    color: var(--second-family);
+    font-weight: 700;
+}
+
+.about-us-description {
+    max-width: 768px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+/* Галерея */
+.about-us-gallery {
+    position: relative;
+    width: 100%;
+}
+
+.about-us-swiper {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.about-us-slide {
+    aspect-ratio: 4/3;
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-us-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Елементи управління */
+.about-us-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.about-us-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 100px;
+    background: var(--color-scheme-1-foreground);
+    border: 2px solid var(--color-scheme-1-border);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.about-us-nav-btn-prev {
+    left: -26px;
+}
+
+.about-us-nav-btn-next {
+    right: -26px;
+}
+
+.about-us-nav-btn:hover,
+.about-us-nav-btn:focus {
+    background: var(--color-wewak);
+    color: var(--color-scheme-1-text);
+    border-color: var(--color-scheme-1-hover);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.about-us-nav-btn:active {
+    transform: translateY(-50%) scale(0.92);
+    background: var(--color-wewak-dark);
+}
+
+.about-us-nav-btn.swiper-button-disabled {
+    border: 2px solid var(--color-scheme-1-border);
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Пагінація */
+.about-us-pagination {
+    display: flex;
+    gap: 12px;
+    position: static;
+    width: auto;
+    align-items: center;
+}
+
+.about-us-pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background-color: gray;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 1;
+    margin: 0;
+    transition: all 0.3s ease;
+}
+
+.about-us-pagination .swiper-pagination-bullet:hover {
+    background-color: var(--color-scheme-1-hover);
+}
+
+.about-us-pagination .swiper-pagination-bullet-active {
+    background-color: #080C0C;
+    transform: scale(1.4);
+}
+
+/* Адаптивність (Мобільна версія) */
+@media (max-width: 768px) {
+    .about-us {
+        padding: 40px 0;
+    }
+
+    .about-us-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .about-us-title {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .about-us-description {
+        text-align: center;
+    }
+
+    .about-us-gallery {
+        max-width: 100%;
+    }
+
+    .about-us-swiper .swiper-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        transform: none;
+        box-sizing: border-box;
+    }
+
+    .about-us-slide {
+        width: 100%;
+        margin-right: 0;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .about-us-controls {
+        display: none;
+    }
+}
