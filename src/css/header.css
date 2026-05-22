@@ -1,0 +1,136 @@
+.container {
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 0 20px;
+  justify-content: space-between;
+}
+
+.burger-icon {
+  display: block;
+}
+
+.header-logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header-nav {
+  display: none;
+}
+
+.nav-link {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #080c0c;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--color-neutral-darkest);
+  text-decoration: underline;
+}
+
+.nav-link:active {
+  color: var(--color-wewak);
+  text-decoration: underline;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.burger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* планшет */
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 20px 32px;
+    justify-content: start;
+  }
+
+  .header-nav {
+    display: flex;
+    gap: 20px;
+  }
+
+  .burger-menu {
+    display: none;
+  }
+
+  /* Выравнивание элементов в линию */
+  .header-container {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Навигационное меню */
+  .header-menu-list {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .nav-link:hover {
+    opacity: 0.7;
+  }
+
+  /* Розовая кнопка */
+  .header-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f19898; /* Розовый цвет с макета */
+    color: #080c0c;
+    width: 133px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 100px; /* Скругление кнопки */
+    border: 1px solid var(--color-wewak);
+    white-space: nowrap;
+    transition:
+      transform 0.1s ease,
+      background-color 0.2s ease;
+  }
+
+  .header-btn:hover,
+  .header-btn:focus {
+    border: 2px solid var(--color-neutral-darkest);
+    background-color: #ffffff;
+  }
+
+  .header-btn:active {
+    border: 2px solid var(--color-neutral-darkest);
+    background-color: var(--color-wewak-light);
+  }
+}
+
+/* десктоп */
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding: 20px 32px;
+    justify-content: space-between;
+  }
+}
