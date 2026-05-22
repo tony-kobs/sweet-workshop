@@ -1,7 +1,9 @@
 import { fetchDesserts, fetchCategories } from './services/api/api.js';
+import { showLoader, hideLoader } from './utils/loader.js';
 import iconsUrl from '../img/icons.svg';
 
 const ITEMS_PER_PAGE = 8;
+
 let currentPage = 1;
 let currentCategory = 'all';
 let totalItems = 0;
@@ -50,19 +52,16 @@ function renderCards(items) {
 
 function renderCategories(categories) {
   const radioMarkup = [
-    `
-    <label class="category-btn">
+    `<label class="category-btn">
       <input type="radio" name="category" value="all" checked hidden />
       Всі десерти
-    </label>
-  `,
+    </label>`,
     ...categories.map(
       ({ _id, name }) => `
     <label class="category-btn">
       <input type="radio" name="category" value="${_id}" hidden />
       ${name}
-    </label>
-  `
+    </label>`
     ),
   ].join('');
 
@@ -76,51 +75,69 @@ function renderCategories(categories) {
 }
 
 async function loadDesserts(reset = false) {
-  if (reset) {
-    listEl.innerHTML = '';
-    currentPage = 1;
+  try {
+    showLoader();
+
+    if (reset) {
+      listEl.innerHTML = '';
+      currentPage = 1;
+    }
+
+    const { data } = await fetchDesserts({
+      page: currentPage,
+      limit: ITEMS_PER_PAGE,
+      ...(currentCategory !== 'all' && { category: currentCategory }),
+    });
+
+    totalItems = data.totalItems;
+    renderCards(data.desserts);
+
+    const loaded = currentPage * ITEMS_PER_PAGE;
+    loadMoreBtn.classList.toggle('load-more-hidden', loaded >= totalItems);
+  } catch (error) {
+    console.error('Помилка завантаження десертів:', error);
+    listEl.innerHTML = `<li class="error-message">Не вдалося завантажити десерти</li>`;
+  } finally {
+    hideLoader();
   }
-
-  const { data } = await fetchDesserts({
-    page: currentPage,
-    limit: ITEMS_PER_PAGE,
-    ...(currentCategory !== 'all' && { category: currentCategory }),
-  });
-
-  totalItems = data.totalItems;
-  renderCards(data.desserts);
-
-  const loaded = currentPage * ITEMS_PER_PAGE;
-  loadMoreBtn.classList.toggle('load-more-hidden', loaded >= totalItems);
 }
 
-loadMoreBtn.addEventListener('click', () => {
+loadMoreBtn.addEventListener('click', async () => {
   currentPage += 1;
-  loadDesserts();
+  await loadDesserts();
 });
 
-categoryDesktop.addEventListener('change', e => {
+categoryDesktop.addEventListener('change', async e => {
   if (e.target.name !== 'category') return;
   currentCategory = e.target.value;
-  loadDesserts(true);
+  await loadDesserts(true);
 });
 
-categoryMobile.addEventListener('change', e => {
+categoryMobile.addEventListener('change', async e => {
   currentCategory = e.target.value;
-  loadDesserts(true);
+  await loadDesserts(true);
 });
 
 listEl.addEventListener('click', e => {
   const btn = e.target.closest('.dessert-modal-btn');
   if (!btn) return;
   const id = btn.dataset.id;
+  console.log(id);
 });
 
 async function init() {
-  const { data: categories } = await fetchCategories();
-  renderCategories(categories);
-  await loadDesserts();
-  loadMoreBtn.classList.remove('load-more-hidden');
+  try {
+    showLoader();
+    const { data: categories } = await fetchCategories();
+    renderCategories(categories);
+    await loadDesserts();
+    loadMoreBtn.classList.remove('load-more-hidden');
+  } catch (error) {
+    console.error('Помилка ініціалізації:', error);
+    listEl.innerHTML = `<li class="error-message">Щось пішло не так</li>`;
+  } finally {
+    hideLoader();
+  }
 }
 
 init();
