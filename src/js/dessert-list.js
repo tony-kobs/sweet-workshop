@@ -3,6 +3,8 @@ import { showLoader, hideLoader } from './utils/loader.js';
 import { showErrorToast } from './utils/toast.js';
 import iconsUrl from '../img/icons.svg';
 import { CustomSelect } from './components/custom-select.js';
+import { openDessertModal }
+  from './dessert-modal.js';
 
 let mobileSelect = null;
 
@@ -134,6 +136,7 @@ listEl.addEventListener('click', e => {
   if (!btn) return;
   const id = btn.dataset.id;
   console.log(id);
+  openDessertModal(id);
 });
 
 async function init() {
