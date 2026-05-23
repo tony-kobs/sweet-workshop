@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 48px 20px;
+  padding: 48px 0;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -166,7 +166,7 @@
 
 @media (min-width: 768px) {
   .footer .container {
-    padding: 48px 32px;
+    padding: 48px 0;
   }
 
   .footer-nav ul {
@@ -184,7 +184,7 @@
 @media (min-width: 1440px) {
   .footer .container {
     max-width: 1312px;
-    padding: 40px 64px;
+    padding: 40px 0;
     gap: 40px;
   }
 
