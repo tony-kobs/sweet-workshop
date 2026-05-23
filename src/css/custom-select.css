@@ -1,108 +1,144 @@
-.sel-wrap {
-  position: relative;
-  user-select: none;
-  width: 100%;
+/* ===== Контейнер ===== */
+.choices[data-type*='select-one']::after,
+.choices[data-type*='select-one'].is-open::after {
+  display: none;
 }
 
-.sel-box {
+/* ===== Основний бокс ===== */
+.choices__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 8px 12px;
-  height: 42px;
-  border: 2px solid var(--color-neutral-darker);
+  border: 2px solid var(--color-neutral-darker) !important;
   border-radius: 6px;
+  padding: 8px 12px;
   background: var(--opacity-transparent);
   cursor: pointer;
+  font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;
+  line-height: 1.5;
   color: var(--color-neutral);
   transition: border-color 0.15s;
 }
 
-.sel-box:hover,
-.sel-box:focus {
+.choices__inner:hover,
+.choices__inner:focus {
   border-color: var(--color-ice-cold-darker);
 }
 
-.sel-box:active {
-  border-color: var(--color-neutral-darker);
-}
-
-.sel-box:active .sel-label {
-  color: var(--color-scheme-1-text);
-}
-
-.sel-box.open {
-  border-color: var(--color-neutral-darker);
+.choices.is-open .choices__inner {
   background: var(--color-ice-cold-lighter);
-}
-
-.sel-box.open .sel-label {
+  border-radius: 6px;
   color: var(--color-scheme-1-text);
 }
 
+.choices__list--single {
+  padding: 0;
+  flex: 1;
+}
+
+.choices__placeholder {
+  color: #2c2c2a;
+  opacity: 1;
+}
+
+/* ===== Іконка стрілки ===== */
 .sel-chevron {
-  font-size: 16px;
-  fill: var(--opacity-neutral-darkest-60);
-  transition: transform 0.2s;
-  /* використовуємо символ або svg */
   display: flex;
   align-items: center;
+  flex-shrink: 0;
+  transition: transform 0.2s;
 }
 
-.sel-chevron.rotated {
+.select-icon {
+  fill: var(--opacity-neutral-darkest-60);
+}
+
+.choices.is-open .sel-chevron {
   transform: rotate(180deg);
 }
 
-.sel-dropdown {
-  position: absolute;
-  top: 43px;
-  left: 0;
-  right: 0;
-  background: var(--color-ice-cold-lighter);
-  border: 2px solid var(--color-neutral-darker);
+/* ===== Dropdown ===== */
+.choices__list--dropdown {
+  border: 2px solid var(--color-neutral-darker) !important;
   border-radius: 6px;
   padding: 8px 12px;
-  max-height: 368px;
-  overflow-y: auto;
+  background: var(--color-ice-cold-lighter);
   z-index: 999;
-  display: none;
-  flex-direction: column;
-  gap: 24px;
+  margin-top: 2px !important;
+  box-shadow: none;
+  overflow: clip;
 }
 
-.sel-dropdown.open {
-  display: flex;
+.choices__list--dropdown,
+.choices__list[aria-expanded] {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background: var(--color-ice-cold-lighter);
 }
 
-.sel-dropdown::-webkit-scrollbar {
+.choices__list--dropdown .choices__item,
+.choices__list[aria-expanded] .choices__item {
+  position: relative;
+  padding: var(--choices-dropdown-item-padding, 0);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1.5;
+  color: var(--color-neutral-darkest);
+}
+
+.choices__list--dropdown .choices__item--selectable.is-highlighted,
+.choices__list--dropdown .choices__item--selectable.is-selected,
+.choices__list[aria-expanded] .choices__item--selectable.is-highlighted,
+.choices__list[aria-expanded] .choices__item--selectable.is-selected {
+  position: relative;
+  background: var(--color-ice-cold-lighter) !important;
+}
+
+.choices__list--dropdown .choices__item.is-selected {
+  width: fit-content;
+  border-bottom: 1px solid var(--color-neutral-darkest);
+  padding-bottom: 2px;
+}
+
+/* ===== Скролбар ===== */
+.choices__list--dropdown {
+  border: 2px solid var(--color-neutral-darker) !important;
+  border-radius: 6px;
+  padding: 8px 12px;
+  background: var(--color-ice-cold-lighter);
+  z-index: 999;
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+  box-shadow: none;
+  overflow-y: auto;
+  max-height: 368px;
+  scrollbar-width: unset;
+  scrollbar-color: var(--color-wewak-light);
+}
+
+.choices__list::-webkit-scrollbar {
+  width: 6px;
+  border-radius: 8px;
+}
+
+.choices__list::-webkit-scrollbar-track {
+  background: var(--color-wewak-light);
   border-radius: 8px;
   width: 6px;
-  background: var(--color-wewak-light);
+  margin: 8px 0;
 }
 
-.sel-dropdown::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  width: 8px;
+.choices__list::-webkit-scrollbar-thumb {
   background: var(--color-wewak-darker);
-
-  min-height: 20px;
+  border-radius: 8px;
+  width: 8px !important;
+  max-height: 10px !important;
 }
 
-.sel-opt {
-  padding: 0;
-  width: fit-content;
-  font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--color-neutral-darkest);
-  cursor: pointer;
-  transition: background 0.1s;
-}
-
-.sel-opt.selected {
-  font-weight: 500;
-  border-bottom: 1px solid var(--color-neutral-darkest);
+/* Внутрішній список — БЕЗ overflow і max-height */
+.choices__list--dropdown .choices__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
