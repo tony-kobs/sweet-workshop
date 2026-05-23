@@ -1,0 +1,108 @@
+.sel-wrap {
+  position: relative;
+  user-select: none;
+  width: 100%;
+}
+
+.sel-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  height: 42px;
+  border: 2px solid var(--color-neutral-darker);
+  border-radius: 6px;
+  background: var(--opacity-transparent);
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--color-neutral);
+  transition: border-color 0.15s;
+}
+
+.sel-box:hover,
+.sel-box:focus {
+  border-color: var(--color-ice-cold-darker);
+}
+
+.sel-box:active {
+  border-color: var(--color-neutral-darker);
+}
+
+.sel-box:active .sel-label {
+  color: var(--color-scheme-1-text);
+}
+
+.sel-box.open {
+  border-color: var(--color-neutral-darker);
+  background: var(--color-ice-cold-lighter);
+}
+
+.sel-box.open .sel-label {
+  color: var(--color-scheme-1-text);
+}
+
+.sel-chevron {
+  font-size: 16px;
+  fill: var(--opacity-neutral-darkest-60);
+  transition: transform 0.2s;
+  /* використовуємо символ або svg */
+  display: flex;
+  align-items: center;
+}
+
+.sel-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+.sel-dropdown {
+  position: absolute;
+  top: 43px;
+  left: 0;
+  right: 0;
+  background: var(--color-ice-cold-lighter);
+  border: 2px solid var(--color-neutral-darker);
+  border-radius: 6px;
+  padding: 8px 12px;
+  max-height: 368px;
+  overflow-y: auto;
+  z-index: 999;
+  display: none;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sel-dropdown.open {
+  display: flex;
+}
+
+.sel-dropdown::-webkit-scrollbar {
+  border-radius: 8px;
+  width: 6px;
+  background: var(--color-wewak-light);
+}
+
+.sel-dropdown::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  width: 8px;
+  background: var(--color-wewak-darker);
+
+  min-height: 20px;
+}
+
+.sel-opt {
+  padding: 0;
+  width: fit-content;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-neutral-darkest);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.sel-opt.selected {
+  font-weight: 500;
+  border-bottom: 1px solid var(--color-neutral-darkest);
+}
