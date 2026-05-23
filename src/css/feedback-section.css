@@ -1,0 +1,407 @@
+/* ==========================================================================
+   1. MOBILE STYLES (Гумова версія від 320px до 767px)
+   ========================================================================== */
+
+.feedback-section {
+  background-color: transparent;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.feedback-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.feedback-list-title {
+  margin-bottom: 24px;
+}
+
+.feedback-list-subtitle {
+  font-size: 18px;
+  color: var(--color-neutral-dark);
+}
+
+.feedback-slider-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+
+.feedback-slider-container {
+  overflow: hidden;
+  width: 100%;
+  height: 208px; /* Фіксована висота контейнера на мобайлі */
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-top: -4px;
+  margin-bottom: -4px;
+  box-sizing: content-box;
+}
+
+.feedback-slider-container > .feedback-list {
+  display: flex;
+  align-items: stretch;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.feedback-slider-container > .feedback-list > .feedback-card {
+  box-sizing: border-box;
+  background-color: transparent;
+  border: 2px solid var(--color-neutral-darkest);
+  border-radius: 12px;
+  padding: 32px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.feedback-raty-stars {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.star-rating-container {
+  display: flex;
+  gap: 4px;
+}
+
+.star-icon {
+  width: 20px;
+  height: 19px;
+  fill: var(--color-neutral-lighter, #e3e3e3);
+  transition: fill 0.2s ease;
+}
+
+.star-icon.is-active {
+  fill: var(--color-neutral-darkest, #080c0c);
+}
+
+.star-icon.is-half {
+  fill: auto;
+}
+
+.feedback-description {
+  font-size: 18px;
+  /* line-height: 1.4; */
+  color: var(--color-neutral-darkest);
+  margin-bottom: 0;
+  flex-grow: 1;
+  text-align: left;
+}
+
+/* Новий ізольований контейнер для скролу довгого тексту відгуку */
+.feedback-scroll-wrap {
+  width: 100%;
+  flex-grow: 1; /* Займає весь вільний простір, штовхаючи автора вниз */
+  overflow-y: scroll; /* Змінено на scroll для примусової активації контейнера прокрутки */
+  -webkit-overflow-scrolling: touch; /* Вмикає плавний інерційний скрол для iOS при русі рукою */
+  margin-bottom: 24px; /* Захисний фіксований відступ перед ім'ям автора */
+  padding-right: 4px; /* Невеликий простір, щоб смуга скролу не тисла на текст */
+  overscroll-behavior: contain; /* Гортається лише текст, сторінка при цьому стоїть на місці */
+  /* cursor: pointer;
+  cursor: grab; */
+
+  /* --- СКРОЛ РУКОЮ НА ТЕЛЕФОНАХ ТА МИШКОЮ НА КОМП'ЮТЕРАХ */
+
+  touch-action: pan-y; /* Дозволяє нативно і м'яко гортати текст пальцем вгору/вниз на смартфонах */
+  cursor: grab; /* Повертаємо іконку "руки-долоні" — вона показує, що текст можна вхопити й тягнути */
+
+  /* Заборона синього виділення літер при затисканні та веденні мишкою */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Коли користувач реально затискає мишку для прокрутки контенту */
+.feedback-scroll-wrap:active {
+  cursor: grabbing; /* Іконка стиснутого кулака */
+}
+
+/* Робимо смугу скролу тонкою та акуратною під колір вашого UI Kit */
+.feedback-scroll-wrap::-webkit-scrollbar {
+  width: 12px;
+}
+.feedback-scroll-wrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+.feedback-scroll-wrap::-webkit-scrollbar-thumb {
+  background-color: var(--color-neutral-lighter, #e3e3e3);
+  background-clip: padding-box;
+  border-left: 4px solid transparent; /* Прозора зона розширення кліку ліворуч */
+  border-right: 4px solid transparent; /* Прозора зона розширення кліку праворуч */
+  border-radius: 10px;
+  transition: background-color 0.2s;
+}
+
+/* При наведенні миші саме на зону скролбару він стає помітнішим і темнішим */
+.feedback-scroll-wrap::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-neutral-dark, #a1a1a1);
+}
+
+.feedback-author {
+  font-weight: 700;
+  color: var(--color-neutral-darkest);
+  margin-top: auto; /* фіксує ім'я автора в самому низу картки */
+  text-align: left;
+}
+
+.feedback-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 32px;
+  width: 100%;
+}
+
+.feedback-pagination {
+  --swiper-pagination-bullet-horizontal-margin: 4.5px;
+  display: flex;
+  align-items: center;
+  position: static !important;
+  width: auto !important;
+}
+
+.feedback-pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-neutral-lighter);
+  border-radius: 50%;
+  opacity: 1;
+  cursor: pointer;
+  margin-left: var(--swiper-pagination-bullet-horizontal-margin);
+  margin-right: var(--swiper-pagination-bullet-horizontal-margin);
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+}
+
+.feedback-pagination .swiper-pagination-bullet-active {
+  background-color: var(--color-neutral-darkest);
+}
+
+.feedback-arrows-group {
+  display: flex;
+  gap: 8px;
+}
+
+/* 
+   ==========================================================================
+   ОНОВЛЕНІ КНОПКИ ТА СТРІЛКИ НАВІГАЦІЇ СУВОРО ЗА МАКЕТОМ UI KIT
+   ==========================================================================
+*/
+
+/* Стан 1: Normal (мобільна кнопка) */
+.feedback-mobile-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-scheme-1-background);
+  border: 1px solid var(--color-neutral-darkest); /* Чорна рамка */
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+/* Стрілка у стані Normal залізобетонно чорна */
+.feedback-mobile-arrow svg {
+  fill: var(--color-neutral-darkest, #080c0c);
+  transition: fill 0.2s ease;
+}
+
+/* Стан 2: Hover/Focus-visible (мобільна кнопка стає рожевою) */
+.feedback-mobile-arrow:hover,
+.feedback-mobile-arrow:focus-visible {
+  background-color: var(--color-wewak);
+  border-color: var(--color-neutral-darkest);
+}
+
+.feedback-mobile-arrow:hover svg,
+.feedback-mobile-arrow:focus-visible svg {
+  fill: var(--color-neutral-darkest);
+}
+
+/* Стан 3: Active (мобільна кнопка при натисканні стає темнішою) */
+.feedback-mobile-arrow:active {
+  background-color: var(--color-wewak-dark, #c38383);
+  border-color: var(--color-neutral-darkest);
+}
+
+.feedback-mobile-arrow:active svg {
+  fill: var(--color-neutral-darkest);
+}
+
+/* Стан 4: Disabled (мобільна кнопка стає повністю сірою на краях слайдера) */
+.feedback-mobile-arrow:disabled,
+.feedback-mobile-arrow.swiper-button-disabled {
+  border-color: var(--color-neutral-lighter); /* Сіра рамка */
+  background-color: var(--color-scheme-1-background);
+  cursor: not-allowed;
+}
+
+.feedback-mobile-arrow:disabled svg,
+.feedback-mobile-arrow.swiper-button-disabled svg {
+  fill: var(--color-neutral-lighter); /* Сіра стрілка */
+}
+
+.feedback-arrow {
+  display: none;
+}
+
+/* ==========================================================================
+   2. TABLET STYLES (Точка перелому з 768px)
+   ========================================================================== */
+@media screen and (min-width: 768px) {
+  .feedback-section {
+    padding-top: unset;
+    padding-bottom: unset;
+  }
+
+  .feedback-container {
+    margin-top: 64px;
+  }
+  /* .container {
+    max-width: 768px;
+    padding-left: 24px;
+    padding-right: 24px;
+  } */
+
+  .feedback-title-wrapper {
+    margin-bottom: 40px;
+  }
+
+  .feedback-slider-container {
+    height: 233px;
+  }
+
+  .feedback-slider-wrapper {
+    height: 233px;
+  }
+
+  .feedback-controls {
+    margin-top: 48px;
+    justify-content: center;
+  }
+  .feedback-pagination {
+    margin-bottom: 64px;
+  }
+
+  .feedback-arrows-group {
+    display: none;
+  }
+
+  /* Стан 1: Normal (велика десктопна кнопка) */
+  .feedback-slider-wrapper > .feedback-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    background-color: var(--color-scheme-1-background);
+    border: 1px solid var(--color-neutral-darkest); /* Чорна рамка */
+    border-radius: 50%;
+    cursor: pointer;
+    transition:
+      background-color 0.2s,
+      border-color 0.2s;
+  }
+
+  /* Стрілка у стані Normal залізобетонно чорна */
+  .feedback-slider-wrapper > .feedback-arrow svg {
+    fill: var(--color-neutral-darkest, #080c0c);
+    transition: fill 0.2s ease;
+  }
+
+  /* Стан 2: Hover/Focus-visible (десктопна кнопка стає рожевою) */
+  .feedback-slider-wrapper > .feedback-arrow:hover,
+  .feedback-slider-wrapper > .feedback-arrow:focus-visible {
+    background-color: var(--color-wewak);
+    border-color: var(--color-neutral-darkest);
+  }
+
+  .feedback-slider-wrapper > .feedback-arrow:hover svg,
+  .feedback-slider-wrapper > .feedback-arrow:focus-visible svg {
+    fill: var(--color-neutral-darkest);
+  }
+
+  /* Стан 3: Active (десктопна кнопка при натисканні стає темнішою) */
+  .feedback-slider-wrapper > .feedback-arrow:active {
+    background-color: var(--color-wewak-dark, #c38383);
+    border-color: var(--color-neutral-darkest);
+  }
+
+  .feedback-slider-wrapper > .feedback-arrow:active svg {
+    fill: var(--color-neutral-darkest);
+  }
+
+  /* Стан 4: Disabled (десктопна кнопка стає повністю сірою на краях слайдера) */
+  .feedback-slider-wrapper > .feedback-arrow:disabled,
+  .feedback-slider-wrapper > .feedback-arrow.swiper-button-disabled {
+    border-color: var(--color-neutral-lighter); /* Сіра рамка */
+    background-color: var(--color-scheme-1-background);
+    cursor: not-allowed;
+  }
+
+  .feedback-slider-wrapper > .feedback-arrow:disabled svg,
+  .feedback-slider-wrapper > .feedback-arrow.swiper-button-disabled svg {
+    fill: var(--color-neutral-lighter); /* Сіра стрілка */
+  }
+
+  .feedback-slider-wrapper > .feedback-arrow-prev {
+    left: -22px;
+  }
+
+  .feedback-slider-wrapper > .feedback-arrow-next {
+    right: -22px;
+  }
+}
+
+/* ==========================================================================
+   3. DESKTOP STYLES (Точка перелому з 1440px)
+   ========================================================================== */
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .feedback-slider-wrapper {
+    height: 233px;
+  }
+
+  .feedback-controls {
+    margin-top: 48px;
+  }
+
+  .feedback-slider-wrapper > .feedback-arrow {
+    width: 48px;
+    height: 48px;
+  }
+
+  .feedback-slider-wrapper > .feedback-arrow-prev {
+    left: -24px;
+  }
+
+  .feedback-slider-wrapper > .feedback-arrow-next {
+    right: -24px;
+  }
+}
