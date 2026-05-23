@@ -159,6 +159,7 @@ body.no-scroll {
 @media (min-width: 768px) {
   .header-container {
     max-width: 768px;
+    padding: 17px 32px;
   }
 
   .burger-btn,
