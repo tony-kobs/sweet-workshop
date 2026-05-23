@@ -76,18 +76,32 @@
 }
 
 .star-icon {
-  width: 20px;
-  height: 19px;
-  fill: var(--color-neutral-lighter, #e3e3e3);
-  transition: fill 0.2s ease;
+  fill: var(
+    --color-neutral-lighter,
+    #e3e3e3
+  );
+
+  stroke: var(
+    --color-neutral-darkest,
+    #080c0c
+  );
+
+  stroke-width: 1.5;
+
+  transition:
+    fill 0.2s ease,
+    stroke 0.2s ease;
 }
 
 .star-icon.is-active {
-  fill: var(--color-neutral-darkest, #080c0c);
+  fill: var(
+    --color-neutral-darkest,
+    #080c0c
+  );
 }
 
 .star-icon.is-half {
-  fill: auto;
+  fill: unset;
 }
 
 .feedback-description {
