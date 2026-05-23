@@ -21,7 +21,7 @@
     <script type="module" crossorigin src="/sweet-deploy-team/index.js"></script>
     <link rel="modulepreload" crossorigin href="/sweet-deploy-team/assets/vendor-8y-lWpHi.js">
     <link rel="stylesheet" crossorigin href="/sweet-deploy-team/assets/vendor-7o4lOLNu.css">
-    <link rel="stylesheet" crossorigin href="/sweet-deploy-team/assets/index-O97nHv5x.css">
+    <link rel="stylesheet" crossorigin href="/sweet-deploy-team/assets/index-CGWLyiIM.css">
   </head>
   <body>
     <header class="header">
@@ -135,7 +135,82 @@
         </div>
     </div>
 </section>
-      
+      <section class="feedback-section section">
+  <div class="container feedback-container">
+    <!-- Блок заголовків секції відгуків  -->
+    <div class="feedback-title-wrapper">
+      <h2 class="feedback-list-title section-title">Відгуки Клієнтів</h2>
+      <p class="feedback-list-subtitle section-subtitle">
+        Найкращі десерти, які я коли-небудь куштував!
+      </p>
+    </div>
+
+    <!-- Локальна обгортка для абсолютної прив'язки великих стрілок поверх карток -->
+    <div class="feedback-slider-wrapper">
+      <!-- Контейнер для ініціалізації Swiper.js з фіксованою висотою в CSS та overflow: hidden -->
+      <div class="feedback-slider-container swiper">
+        <ul class="feedback-list swiper-wrapper" id="feedback-list">
+          <!-- Картки відгуків рендериться сюди динамічно через JS -->
+        </ul>
+      </div>
+
+      <!-- Блок контролерів (для мобілки вибудовує пагінацію ліворуч, стрілки праворуч в один ряд) -->
+      <div class="feedback-controls">
+        <!-- Контейнер для крапок пагінації Swiper -->
+        <div class="feedback-pagination"></div>
+
+        <!-- Обгортка стрілок перегортання лише для мобільної версії -->
+        <div class="feedback-arrows-group">
+          <button
+            type="button"
+            class="feedback-mobile-arrow feedback-mobile-arrow-prev"
+            aria-label="Попередній слайд"
+          >
+            <svg width="24" height="24" fill="#080C0C" viewBox="0 0 24 24">
+              <path
+                d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+              />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="feedback-mobile-arrow feedback-mobile-arrow-next"
+            aria-label="Наступний слайд"
+          >
+            <svg width="24" height="24" fill="#080C0C" viewBox="0 0 24 24">
+              <path
+                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Великі десктопні кнопки-button. Містять inline-SVG суворих розмірів за макетом Фігми -->
+      <button
+        type="button"
+        class="feedback-arrow feedback-arrow-prev"
+        aria-label="Попередній слайд"
+      >
+        <svg width="24" height="24" fill="#080C0C" viewBox="0 0 24 24">
+          <path
+            d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+          />
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="feedback-arrow feedback-arrow-next"
+        aria-label="Наступний слайд"
+      >
+        <svg width="24" height="24" fill="#080C0C" viewBox="0 0 24 24">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
       
     </main>
 
