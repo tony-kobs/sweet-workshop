@@ -6,9 +6,6 @@ import 'swiper/css';
 import './js/dessert-list.js';
 import './js/about-us.js';
 import './js/feedback-section.js';
-
-
-// main.js
 import { initFaqAccordion } from './js/faq-section';
 import './css/faq-section.css';
 
