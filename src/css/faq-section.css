@@ -15,7 +15,7 @@
 
 .ac {
   border: none !important;
-  border-top: 1px solid #080c0c !important;
+  border-top: 1.5px solid #080c0c !important;
   transition: all 0.2s ease;
   overflow: hidden;
   border-radius: 0 !important;
@@ -25,7 +25,7 @@
   display: none !important;
 }
 .ac:last-child {
-  border-bottom: 1px solid #080c0c !important;
+  border-bottom: 1.5px solid #080c0c !important;
 }
 
 .ac-trigger {
@@ -38,7 +38,7 @@
 
 .ac-trigger {
   font-weight: 600 !important;
-  font-size: 18px !important;
+  font-size: 16px !important;
   line-height: 1.5 !important;
   color: #080c0c !important;
 }
@@ -92,12 +92,20 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .ac-trigger {
+    font-size: 18px !important;
+    padding: 22.5px 0 !important;
+  }
   .accordion-js {
     max-width: 704px;
   }
 }
 
 @media only screen and (min-width: 1200px) {
+  .faq-title {
+    font-size: 48px;
+    margin-bottom: 80px;
+  }
   .accordion-js {
     max-width: 865px;
   }
