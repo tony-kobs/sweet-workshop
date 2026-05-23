@@ -1,29 +1,47 @@
 <header class="header">
-  <div class="header-container container">
-    <!-- Логотип -->
-    <a href="/index.html" class="header-logo" id="logo" aria-label="На головну">
-      <svg class="icon-logo" width="146px" height="31px">
+  <div class="header-container">
+
+    <a href="#" class="logo-link" aria-label="Головна сторінка">
+      <svg class="logo-svg" width="146px" height="31px">
         <use href="/img/icons.svg#icon-logo"></use>
       </svg>
     </a>
 
-    <!-- Кнопка бургер-меню (мобільна) -->
-    <button class="burger-menu" id="burger-btn" aria-expanded="false" aria-controls="menu" aria-label="Відкрити меню">
-      <svg class="burger-icon" width="24px" height="24px">
+    <button class="burger-btn" id="burgerToggle" aria-label="Відкрити меню">
+      <svg class="menu-icon" width="24px" height="24px">
         <use href="/img/icons.svg#icon-menu"></use>
       </svg>
     </button>
 
-    <!-- Блок навігації -->
-    <nav class="header-nav" id="menu">
-      <ul class="header-menu-list">
-        <li class="header-menu-item"><a href="#dessert-list-section" class="nav-link">Солодощі</a></li>
-        <li class="header-menu-item"><a href="#about-us" class="nav-link">Про нас</a></li>
-        <li class="header-menu-item"><a href="#feedback-list" class="nav-link">Відгуки</a></li>
-        <li class="header-menu-item"><a href="#questions" class="nav-link">Часті питання</a></li>
-      </ul>
-      <!-- Кнопка навігації -->
-      <a href="#desserts" class="header-btn">До покупок</a>
+    <nav class="nav-menu" id="menu">
+
+      <div class="menu-mobile-header">
+        <a href="#" class="logo-link" aria-label="Головна сторінка">
+          <svg class="logo-svg" width="146px" height="31px">
+            <use href="/img/icons.svg#icon-logo"></use>
+          </svg>
+        </a>
+
+        <button class="close-btn" id="burgerClose" aria-label="Закрити меню">
+          <svg class="close-icon" width="24px" height="24px">
+            <use href="/img/icons.svg#icon-close"></use>
+          </svg>
+        </button>
+      </div>
+
+      <div class="nav-links-wrapper">
+        <a href="#products" class="nav-link">Солодощі</a>
+        <a href="#about" class="nav-link">Про нас</a>
+        <a href="#reviews" class="nav-link">Відгуки</a>
+        <a href="#faq" class="nav-link">Часті питання</a>
+      </div>
+
+      <a href="#products" class="btn-action">До покупок</a>
     </nav>
+
   </div>
 </header>
+
+
+<script src="js/header.js"></script>
+</body>

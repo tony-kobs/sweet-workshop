@@ -1,136 +1,250 @@
-.container {
-  max-width: 375px;
-  margin: 0 auto;
-  padding: 0 20px;
-  justify-content: space-between;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.burger-icon {
-  display: block;
+html {
+  scroll-behavior: smooth;
 }
 
-.header-logo {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh;
 }
 
-.header-nav {
-  display: none;
-}
-
-.nav-link {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #080c0c;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: opacity 0.2s ease;
-}
-
-.nav-link:hover,
-.nav-link:focus {
-  color: var(--color-neutral-darkest);
-  text-decoration: underline;
-}
-
-.nav-link:active {
-  color: var(--color-wewak);
-  text-decoration: underline;
+.header {
+  width: 100%;
+  background-color: #f5fdfd;
+  position: sticky;
+  top: 0;
+  z-index: 1100;
 }
 
 .header-container {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  width: 100%;
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 17px 20px;
 }
 
-.burger-menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.logo-link {
+  cursor: pointer;
+}
+
+.burger-btn {
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
 }
 
-/* планшет */
+.menu-mobile-header {
+  display: none;
+}
 
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    padding: 20px 32px;
-    justify-content: start;
-  }
+@media (max-width: 767px) {
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f5fdfd;
+    z-index: 1500;
 
-  .header-nav {
-    display: flex;
-    gap: 20px;
-  }
-
-  .burger-menu {
     display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    padding: 17px 20px 49px 20px;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Выравнивание элементов в линию */
-  .header-container {
+  .nav-menu.open {
+    display: flex !important;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .menu-mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 335px;
+    margin: 0 auto;
+    margin-bottom: 49px;
+  }
+
+  .close-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    padding: 0;
     display: flex;
     align-items: center;
   }
 
-  /* Навигационное меню */
-  .header-menu-list {
+  .nav-links-wrapper {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 335px;
+    margin: 0 auto;
     gap: 32px;
-    align-items: center;
   }
 
-  .nav-link:hover {
-    opacity: 0.7;
+  .nav-menu .nav-link {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000000;
+    text-decoration: none;
+    margin-bottom: 0;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Розовая кнопка */
-  .header-btn {
-    display: inline-flex;
+  .nav-menu .nav-link:hover,
+  .nav-menu .nav-link:focus {
+    border-bottom: 1px solid var(--color-neutral-darkest);
+  }
+
+  .nav-menu .nav-link:active {
+    color: var(--color-wewak);
+  }
+
+  .nav-menu .btn-action {
+    display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f19898; /* Розовый цвет с макета */
-    color: #080c0c;
-    width: 133px;
+    width: 335px;
     height: 40px;
+    background: var(--color-wewak);
+    color: #000000;
     font-size: 16px;
     font-weight: 500;
-    line-height: 1.5;
+    padding: 0;
+    border-radius: 30px;
     text-decoration: none;
-    padding: 8px 20px;
-    border-radius: 100px; /* Скругление кнопки */
-    border: 1px solid var(--color-wewak);
-    white-space: nowrap;
-    transition:
-      transform 0.1s ease,
-      background-color 0.2s ease;
+    margin: 48px auto 0 auto;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .header-btn:hover,
-  .header-btn:focus {
+  .nav-menu .btn-action:hover,
+  .nav-menu .btn-action:focus {
     border: 2px solid var(--color-neutral-darkest);
-    background-color: #ffffff;
+    background-color: transparent;
   }
 
-  .header-btn:active {
+  .nav-menu .btn-action:active {
     border: 2px solid var(--color-neutral-darkest);
     background-color: var(--color-wewak-light);
   }
 }
 
-/* десктоп */
+@media (min-width: 768px) {
+  .header-container {
+    max-width: 768px;
+  }
+
+  .burger-btn,
+  .menu-mobile-header {
+    display: none;
+  }
+
+  .nav-menu {
+    position: static;
+    width: auto;
+    height: auto !important;
+    background: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    gap: 16px;
+  }
+
+  .nav-links-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    margin: 0;
+  }
+
+  .nav-menu .nav-link {
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000;
+    margin-bottom: 0;
+    white-space: nowrap;
+    position: relative;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .nav-menu .nav-link:hover,
+  .nav-menu .nav-link:focus {
+    text-decoration: underline;
+  }
+
+  .nav-menu .nav-link:active {
+    color: var(--color-wewak);
+  }
+
+  .nav-menu .btn-action {
+    display: inline-flex;
+    width: 133px;
+    height: 40px;
+    background-color: #f19898;
+    color: #080c0c;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-top: 0;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .nav-menu .btn-action:hover,
+  .nav-menu .btn-ction:focus {
+    background-color: transparent;
+    border: 2px solid var(--color-neutral-darkest);
+  }
+  .nav-menu .btn-action:active {
+    border: 2px solid var(--color-neutral-darkest);
+    background-color: var(--color-wewak-light);
+    transform: scale(0.97);
+  }
+}
 
 @media (min-width: 1440px) {
-  .container {
+  .header-container {
     max-width: 1440px;
-    padding: 20px 32px;
     justify-content: space-between;
+    padding: 16px 64px;
+  }
+
+  .nav-links-wrapper {
+    gap: 32px;
+  }
+
+  .nav-menu {
+    gap: 32px;
   }
 }
