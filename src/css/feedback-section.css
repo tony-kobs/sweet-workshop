@@ -17,7 +17,7 @@
 
 .feedback-list-subtitle {
   font-size: 18px;
-  color: var(--color-neutral-dark);
+  /* color: var(--color-neutral-dark); */
 }
 
 .feedback-slider-wrapper {
@@ -29,7 +29,7 @@
 .feedback-slider-container {
   overflow: hidden;
   width: 100%;
-  height: 208px; /* Фіксована висота контейнера на мобайлі */
+  height: 208px; /* Фіксована висота контейнера на моб */
   margin-bottom: 32px;
   box-sizing: content-box;
 }
@@ -112,9 +112,9 @@
   /* ---------------------------------------------------------------- */
   /* --- СКРОЛ РУКОЮ по бігунку НА ТЕЛЕФОНАХ ТА МИШКОЮ НА КОМП'ЮТЕРАХ */
   /* ---------------------------------------------------------------- */
-  touch-action: pan-y; /* Дозволяє нативно і м'яко гортати текст пальцем вгору/вниз на смартфонах */
+  touch-action: pan-y;
   cursor: pointer;
-  cursor: grab; /* Повертаємо іконку "руки-долоні" — вона показує, що текст можна вхопити й тягнути */
+  cursor: grab;
 
   /* Заборона синього виділення літер при затисканні та веденні мишкою */
   -webkit-user-select: none;
@@ -155,7 +155,7 @@
    ==========================================================================
 */
 
-/* 1-й рівень специфічності. Головний контейнер слайдера повністю обнуляє маржини для дочірніх крапок */
+/* Головний контейнер слайдера повністю обнуляє маржини для дочірніх крапок */
 .feedback-slider-container {
   --swiper-pagination-bullet-horizontal-margin: 0px;
   --swiper-pagination-bullet-vertical-margin: 0px;
@@ -165,7 +165,7 @@
 /* ---START----БЛОК ПАГІНАЦІЇ (МОБІЛЬНА ВЕРСІЯ - ДО 767px)------ */
 /* ------------------------------------------------------------- */
 
-/* 1-й рівень специфічності. Контейнер для пагінації та мобільних стрілок */
+/* Контейнер для пагінації та мобільних стрілок */
 .feedback-controls {
   display: flex;
   align-items: center; /* Центрує стрілки та блок пагінації строго по вертикальній осі */
@@ -175,12 +175,11 @@
   width: 100%;
 }
 
-/* 1-й рівень специфічності. Обгортка пагінації з гнучкими налаштуваннями сітки */
+/* Обгортка пагінації з гнучкими налаштуваннями сітки */
 .feedback-pagination {
   /* КОНСТРУКТОР СІТКИ ПАГІНАЦІЇ */
-  --bullet-size: 8px; /* Фіксований розмір кожної крапки за ТЗ */
-  --bullet-gap: 9px; /* Фіксований крок (відступ) між крапками за ТЗ */
-  --bullets-per-row: 5; /* Кількість крапок в одному ряду (зараз 5 для матриці 5х5) */
+  --bullet-size: 8px;
+  --bullet-gap: 9px;
 
   /* Перевизначаємо внутрішні змінні Swiper нативним шляхом, БЕЗ !important */
   --swiper-pagination-bullet-horizontal-gap: 0px;
@@ -193,18 +192,12 @@
   justify-content: flex-start; /* Вирівнювання крапок строго по лівому краю на мобілці */
   gap: var(--bullet-gap); /* Нативний проміжний крок між елементами */
 
-  /* Автоматичний розрахунок ширини під 5 крапок у рядку (5*8px + 4*9px = 76px) */
-  width: calc(
-    (var(--bullets-per-row) * var(--bullet-size)) +
-      ((var(--bullets-per-row) - 1) * var(--bullet-gap))
-  );
-
   max-height: 28px; /* Обмеження висоти контейнера строго за ТЗ */
   margin: 0;
   padding: 0;
 }
 
-/* 2-й рівень специфічності. Базовий вигляд кожної сірої крапки (строго 8px на 8px за ТЗ) */
+/* Базовий вигляд кожної сірої крапки */
 .feedback-pagination .swiper-pagination-bullet {
   flex-shrink: 0; /* Повністю захищає крапки від будь-якої деформації чи стискання */
   display: block;
@@ -220,7 +213,7 @@
     background-color 0.3s ease;
 }
 
-/* 2-й рівень специфічності. Активна чорна крапка на мобілці */
+/* Активна чорна крапка на мобілці */
 .feedback-pagination .swiper-pagination-bullet-active {
   opacity: 1;
   background-color: var(--color-scheme-1-text);
@@ -277,7 +270,9 @@
 }
 
 /* Стан 3: Active (мобільна кнопка при натисканні стає темнішою) */
-.feedback-mobile-arrow:active {
+.feedback-mobile-arrow:active,
+.feedback-mobile-arrow-prev.is-active,
+.feedback-mobile-arrow-next.is-active {
   background-color: var(--color-wewak-dark, #c38383);
   border-color: var(--color-neutral-darkest);
 }
@@ -421,7 +416,9 @@
   }
 
   /* Стан 3: Active (десктопна кнопка при натисканні стає темнішою) */
-  .feedback-slider-wrapper > .feedback-arrow:active {
+  .feedback-slider-wrapper > .feedback-arrow:active,
+  .feedback-slider-wrapper > .feedback-arrow-prev.is-active,
+  .feedback-slider-wrapper > .feedback-arrow-next.is-active {
     background-color: var(--color-wewak-dark, #c38383);
     border-color: var(--color-neutral-darkest);
   }
