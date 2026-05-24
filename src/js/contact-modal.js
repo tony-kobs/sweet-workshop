@@ -1,6 +1,7 @@
 import iconsUrl from '../img/icons.svg';
 import { createOrder } from './services/api/api';
 import { showSuccessToast, showErrorToast } from './utils/toast';
+import { showLoader, hideLoader } from './utils/loader';
 
 const body = document.querySelector("body");
 
@@ -49,6 +50,7 @@ const handleSubmitOrderForm = async (e) => {
     };
     
     try {
+        showLoader();
         const { data } = await createOrder(orderData);
         showSuccessToast(`Номер замовлення: ${data.orderNum}`);
         e.target.reset();
@@ -56,6 +58,8 @@ const handleSubmitOrderForm = async (e) => {
     } catch (error) {
         const message = error.response?.data?.message || "Щось пішло не так. Спробуйте ще раз.";
         showErrorToast(message);       
+    } finally {
+        hideLoader();
     };
 }
 
