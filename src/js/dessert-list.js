@@ -131,7 +131,7 @@ categoryDesktop.addEventListener('change', async e => {
   await loadDesserts(true);
 });
 
-listEl.addEventListener('click', e => {
+document.addEventListener('click', e => {
   const btn = e.target.closest('.dessert-modal-btn');
   if (!btn) return;
   const id = btn.dataset.id;
