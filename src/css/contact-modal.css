@@ -113,6 +113,8 @@
   font-size: 16px;
   line-height: 1.5;
   background: var(--color-wewak);
+  transition: all 0.3s ease-in-out;
+
 }
 .modal-order-submit-btn:hover,
 .modal-order-submit-btn:focus {
