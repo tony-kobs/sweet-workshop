@@ -10,6 +10,6 @@ import './js/contact-modal';
 import './js/feedback-section.js';
 import { initFaqAccordion } from './js/faq-section';
 import './js/faq-section.js';
-
+import './js/popular-products.js'
 initFaqAccordion();
 
