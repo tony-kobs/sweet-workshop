@@ -1,0 +1,129 @@
+.popular-products {
+  padding: 40px 0;
+  background-color: #f5fdfd;
+}
+
+.popular-title {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #080c0c;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.popular-swiper .dessert-item {
+  background: transparent;
+  border: 1px solid #080c0c;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.popular-swiper .dessert-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.popular-controls-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  position: relative;
+}
+
+.popular-pagination.swiper-pagination {
+  position: static;
+  display: flex;
+  gap: 8px;
+  width: auto;
+}
+
+.popular-pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background-color: #080c0c;
+  opacity: 0.2;
+  margin: 0;
+  transition: opacity 0.3s ease;
+}
+
+.popular-pagination .swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+.popular-nav-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.popular-nav-btn-prev,
+.popular-nav-btn-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+  border: 2px solid var(--color-scheme-1-border);
+  background-color: transparent;
+  color: #080c0c;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.popular-nav-btn-prev svg,
+.popular-nav-btn-next svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.popular-nav-btn-prev:not(.swiper-button-disabled):hover,
+.popular-nav-btn-next:not(.swiper-button-disabled):hover {
+  background: var(--color-wewak);
+  color: var(--color-scheme-1-text);
+  border-color: var(--color-scheme-1-hover);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.popular-nav-btn-prev.swiper-button-disabled,
+.popular-nav-btn-next.swiper-button-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.popular-swiper .swiper-slide {
+  height: auto;
+  display: flex;
+}
+
+.popular-swiper .dessert-item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.popular-swiper .dessert-content-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.popular-swiper .dessert-header-content {
+  flex-grow: 1;
+}
