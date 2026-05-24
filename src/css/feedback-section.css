@@ -150,69 +150,82 @@
   background-color: var(--color-neutral-dark, #a1a1a1);
 }
 
+/* ==========================================================================
+   БЛОК ПАГІНАЦІЯ: ГЛОБАЛЬНЕ ОБНУЛЕННЯ ЗМІННИХ SWIPER (БЕЗ !IMPORTANT)
+   ==========================================================================
+*/
+
+/* 1-й рівень специфічності. Головний контейнер слайдера повністю обнуляє маржини для дочірніх крапок */
+.feedback-slider-container {
+  --swiper-pagination-bullet-horizontal-margin: 0px;
+  --swiper-pagination-bullet-vertical-margin: 0px;
+}
+
 /* ------------------------------------------------------------- */
 /* ---START----БЛОК ПАГІНАЦІЇ (МОБІЛЬНА ВЕРСІЯ - ДО 767px)------ */
 /* ------------------------------------------------------------- */
 
+/* 1-й рівень специфічності. Контейнер для пагінації та мобільних стрілок */
 .feedback-controls {
   display: flex;
-  align-items: center;
+  align-items: center; /* Центрує стрілки та блок пагінації строго по вертикальній осі */
   justify-content: space-between;
   gap: 16px;
+  margin-top: 24px;
   width: 100%;
 }
 
-/* Контейнер пагінації для мобільних пристроїв */
-.feedback-pagination.swiper-pagination-bullets-dynamic {
-  display: block;
-  text-align: left;
-  overflow: hidden;
-  white-space: nowrap; /* Обов'язково для dynamicBullets, щоб крапки йшли в один ряд */
-  width: 100px;
-  height: 16px; /* Висота із запасом для збільшеної активної крапки */
-  margin: 0; /* Прибираємо авто-маржини, фіксуємо зліва на одній лінії зі стрілками */
+/* 1-й рівень специфічності. Обгортка пагінації з гнучкими налаштуваннями сітки */
+.feedback-pagination {
+  /* КОНСТРУКТОР СІТКИ ПАГІНАЦІЇ */
+  --bullet-size: 8px; /* Фіксований розмір кожної крапки за ТЗ */
+  --bullet-gap: 9px; /* Фіксований крок (відступ) між крапками за ТЗ */
+  --bullets-per-row: 5; /* Кількість крапок в одному ряду (зараз 5 для матриці 5х5) */
+
+  /* Перевизначаємо внутрішні змінні Swiper нативним шляхом, БЕЗ !important */
+  --swiper-pagination-bullet-horizontal-gap: 0px;
+  --swiper-pagination-bullet-vertical-gap: 0px;
+
+  position: static; /* Нейтралізуємо absolute від Swiper, повертаючи в потік */
+  display: flex;
+  flex-wrap: wrap; /* Дозволяє крапкам переноситися на наступний рядок */
+  align-items: center; /* Центрує обидва рядки крапок по вертикалі відносно стрілок */
+  justify-content: flex-start; /* Вирівнювання крапок строго по лівому краю на мобілці */
+  gap: var(--bullet-gap); /* Нативний проміжний крок між елементами */
+
+  /* Автоматичний розрахунок ширини під 5 крапок у рядку (5*8px + 4*9px = 76px) */
+  width: calc(
+    (var(--bullets-per-row) * var(--bullet-size)) +
+      ((var(--bullets-per-row) - 1) * var(--bullet-gap))
+  );
+
+  max-height: 28px; /* Обмеження висоти контейнера строго за ТЗ */
+  margin: 0;
+  padding: 0;
 }
 
-/* Базовий та стандартний вигляд сірих крапок */
+/* 2-й рівень специфічності. Базовий вигляд кожної сірої крапки (строго 8px на 8px за ТЗ) */
 .feedback-pagination .swiper-pagination-bullet {
-  display: inline-block; /* Обов'язково, щоб у крапок з'явився розмір */
-  width: 8px;
-  height: 8px;
-  margin: 0 4px; /* Рівномірні відступи між крапками в рядку */
-  background-color: var(--color-neutral-light);
+  flex-shrink: 0; /* Повністю захищає крапки від будь-якої деформації чи стискання */
+  display: block;
+  width: var(--bullet-size); /* Прив'язка до змінної розміру */
+  height: var(--bullet-size); /* Прив'язка до змінної розміру */
   border-radius: 50%;
+  background-color: var(--color-neutral-light);
   opacity: 0.5;
   cursor: pointer;
+  transform: none;
   transition:
-    transform 0.3s ease,
     opacity 0.3s ease,
     background-color 0.3s ease;
 }
 
-/* Активна крапка */
+/* 2-й рівень специфічності. Активна чорна крапка на мобілці */
 .feedback-pagination .swiper-pagination-bullet-active {
   opacity: 1;
-  background-color: var(--color-neutral-darkest);
-  transform: scale(1.2);
+  background-color: var(--color-scheme-1-text);
 }
 
-/* Наступні та попередні головні крапки залишаємо у стандартному розмірі макету */
-.feedback-pagination .swiper-pagination-bullet-active-main {
-  transform: scale(1);
-}
-
-.feedback-pagination .swiper-pagination-bullet-active-prev,
-.feedback-pagination .swiper-pagination-bullet-active-next {
-  transform: scale(0.8); /* Сусідні крапки стають меншими */
-  opacity: 0.4;
-}
-
-/* Тільки найвіддаленіші крапки на краях контейнера будуть плавно зменшуватися, показуючи скрол */
-.feedback-pagination .swiper-pagination-bullet-active-prev-prev,
-.feedback-pagination .swiper-pagination-bullet-active-next-next {
-  transform: scale(0.6); /* Крайні видимі крапки стають зовсім крихітними */
-  opacity: 0.2;
-}
 /* --------------------------------------------------------- */
 /* ---END--- БЛОК ПАГІНАЦІЇ (МОБІЛЬНА ВЕРСІЯ - ДО 767px)-----*/
 /* --------------------------------------------------------- */
@@ -336,37 +349,31 @@
   /* ---START----БЛОК ПАГІНАЦІЇ (TABLET STYLES - з 768px)---- */
   /* -------------------------------------------------------- */
 
+  /* Перебудова блоку контролерів для вирівнювання пагінації строго по центру секції */
   .feedback-controls {
     justify-content: center;
-    /* margin-top: 32px; */
+    margin-top: 32px;
   }
 
-  /* Повертаємо пагінацію в класичний flex-ряд по центру сторінки */
+  /* Повернення пагінації в один горизонтальний довгий ряд по центру сторінки */
   .feedback-pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    width: auto;
-    overflow: visible;
-    white-space: normal;
+    justify-content: center; /* Центрує весь масив крапок на великих екранах */
+    flex-wrap: nowrap; /* Скасовує мобільне перенесення рядків, вибудовує все в одну лінію */
+    gap: var(
+      --bullet-gap
+    ); /* Зберігаємо крок 9px для лінійності великих екранів */
+    width: auto; /* Знімаємо мобільне обмеження автоматичного розрахунку ширини */
+    max-height: 28px; /* Зберігаємо обмеження висоти контейнера строго за ТЗ */
   }
 
-  /* Гарантовано повертаємо стандартний розмір крапок 8px на 8px без використання !important */
-  .feedback-controls .feedback-pagination .swiper-pagination-bullet {
-    display: block;
-    width: 8px; /* Стандартний розмір за замовчуванням */
-    height: 8px; /* Стандартний розмір за замовчуванням */
-    margin: 0; /* Обнуляємо мобільні інлайнові відступи */
-    transform: none; /* Повністю вимикаємо будь-які збільшення/зменшення */
+  /* Статичні крапки однакового розміру 8px на 8px без змін */
+  .feedback-pagination .swiper-pagination-bullet {
     opacity: 0.5;
   }
 
-  /* Активна чорна крапка на великих екранах */
-  .feedback-controls .feedback-pagination .swiper-pagination-bullet-active {
-    background-color: var(--color-scheme-1-text);
+  /* Статична активна чорна крапка на планшеті та десктопі строго по центру */
+  .feedback-pagination .swiper-pagination-bullet-active {
     opacity: 1;
-    transform: none; /* Жодного збільшення на десктопі, рівний ряд за макетом */
   }
 
   /* --------------------------------------------------------- */
