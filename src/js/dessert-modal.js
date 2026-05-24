@@ -1,7 +1,7 @@
 import { fetchDessertById } from './services/api/api.js';
 import { lockScroll, unlockScroll } from './utils/scroll-lock.js';
 import { generateStarsTemplate } from './utils/stars.js';
-
+import { openOrderModal } from './contact-modal.js';
 import iconsUrl from '../img/icons.svg';
 
 function renderStars(rate) {
@@ -133,7 +133,7 @@ modalContent.innerHTML = `
     orderBtn.addEventListener('click', () => {
       closeModal();
 
-      // openOrderModal();
+      openOrderModal(id);
     });
   } catch (error) {
     modalContent.innerHTML = `
