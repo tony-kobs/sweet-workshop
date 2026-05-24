@@ -1,13 +1,8 @@
-/* ==========================================================================
-   1. MOBILE STYLES (Гумова версія від 320px до 767px)
-   ========================================================================== */
-
-.feedback-section {
-  background-color: transparent;
-  padding-top: 64px;
-  padding-bottom: 64px;
-}
-
+/* 
+  ==========================================================================
+   1. MOBILE STYLES (від 320px до 767px)
+  ========================================================================== 
+*/
 .feedback-title-wrapper {
   display: flex;
   flex-direction: column;
@@ -35,10 +30,7 @@
   overflow: hidden;
   width: 100%;
   height: 208px; /* Фіксована висота контейнера на мобайлі */
-  padding-top: 4px;
-  padding-bottom: 4px;
-  margin-top: -4px;
-  margin-bottom: -4px;
+  margin-bottom: 32px;
   box-sizing: content-box;
 }
 
@@ -74,60 +66,54 @@
   display: flex;
   gap: 4px;
 }
-
 .star-icon {
-  fill: var(
-    --color-neutral-lighter,
-    #e3e3e3
-  );
-
-  stroke: var(
-    --color-neutral-darkest,
-    #080c0c
-  );
-
+  fill: var(--color-neutral-lighter, #e3e3e3);
+  stroke: var(--color-neutral-darkest, #080c0c);
   stroke-width: 1.5;
-
   transition:
     fill 0.2s ease,
     stroke 0.2s ease;
 }
 
 .star-icon.is-active {
-  fill: var(
-    --color-neutral-darkest,
-    #080c0c
-  );
+  fill: var(--color-neutral-darkest, #080c0c);
 }
 
 .star-icon.is-half {
   fill: unset;
 }
-
 .feedback-description {
   font-size: 18px;
-  /* line-height: 1.4; */
   color: var(--color-neutral-darkest);
   margin-bottom: 0;
   flex-grow: 1;
   text-align: left;
 }
 
-/* Новий ізольований контейнер для скролу довгого тексту відгуку */
+.feedback-author {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-neutral-darkest);
+  margin-top: auto; /* фіксує ім'я автора в самому низу картки */
+  text-align: left;
+}
+
+/* ізольований контейнер для скролу довгого тексту відгуку */
 .feedback-scroll-wrap {
   width: 100%;
   flex-grow: 1; /* Займає весь вільний простір, штовхаючи автора вниз */
-  overflow-y: scroll; /* Змінено на scroll для примусової активації контейнера прокрутки */
+  overflow-y: scroll; /* scroll для примусової активації контейнера прокрутки */
   -webkit-overflow-scrolling: touch; /* Вмикає плавний інерційний скрол для iOS при русі рукою */
-  margin-bottom: 24px; /* Захисний фіксований відступ перед ім'ям автора */
-  padding-right: 4px; /* Невеликий простір, щоб смуга скролу не тисла на текст */
+  margin-bottom: 15px; /* Захисний фіксований відступ перед ім'ям автора */
+  padding-bottom: 10px;
+  padding-right: 10px; /* Невеликий простір, щоб смуга скролу не тисла на текст */
   overscroll-behavior: contain; /* Гортається лише текст, сторінка при цьому стоїть на місці */
-  /* cursor: pointer;
-  cursor: grab; */
 
-  /* --- СКРОЛ РУКОЮ НА ТЕЛЕФОНАХ ТА МИШКОЮ НА КОМП'ЮТЕРАХ */
-
+  /* ---------------------------------------------------------------- */
+  /* --- СКРОЛ РУКОЮ по бігунку НА ТЕЛЕФОНАХ ТА МИШКОЮ НА КОМП'ЮТЕРАХ */
+  /* ---------------------------------------------------------------- */
   touch-action: pan-y; /* Дозволяє нативно і м'яко гортати текст пальцем вгору/вниз на смартфонах */
+  cursor: pointer;
   cursor: grab; /* Повертаємо іконку "руки-долоні" — вона показує, що текст можна вхопити й тягнути */
 
   /* Заборона синього виділення літер при затисканні та веденні мишкою */
@@ -142,9 +128,9 @@
   cursor: grabbing; /* Іконка стиснутого кулака */
 }
 
-/* Робимо смугу скролу тонкою та акуратною під колір вашого UI Kit */
+/* Робимо смугу скролу тонкою */
 .feedback-scroll-wrap::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
 }
 .feedback-scroll-wrap::-webkit-scrollbar-track {
   background: transparent;
@@ -152,9 +138,10 @@
 .feedback-scroll-wrap::-webkit-scrollbar-thumb {
   background-color: var(--color-neutral-lighter, #e3e3e3);
   background-clip: padding-box;
-  border-left: 4px solid transparent; /* Прозора зона розширення кліку ліворуч */
-  border-right: 4px solid transparent; /* Прозора зона розширення кліку праворуч */
-  border-radius: 10px;
+  border-left: 3px solid transparent; /* Прозора зона розширення кліку ліворуч */
+  border-right: 3px solid transparent; /* Прозора зона розширення кліку праворуч */
+  border-radius: 70%;
+
   transition: background-color 0.2s;
 }
 
@@ -163,56 +150,82 @@
   background-color: var(--color-neutral-dark, #a1a1a1);
 }
 
-.feedback-author {
-  font-weight: 700;
-  color: var(--color-neutral-darkest);
-  margin-top: auto; /* фіксує ім'я автора в самому низу картки */
-  text-align: left;
-}
+/* ------------------------------------------------------------- */
+/* ---START----БЛОК ПАГІНАЦІЇ (МОБІЛЬНА ВЕРСІЯ - ДО 767px)------ */
+/* ------------------------------------------------------------- */
 
 .feedback-controls {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 32px;
+  gap: 16px;
   width: 100%;
 }
 
-.feedback-pagination {
-  --swiper-pagination-bullet-horizontal-margin: 4.5px;
-  display: flex;
-  align-items: center;
-  position: static !important;
-  width: auto !important;
+/* Контейнер пагінації для мобільних пристроїв */
+.feedback-pagination.swiper-pagination-bullets-dynamic {
+  display: block;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap; /* Обов'язково для dynamicBullets, щоб крапки йшли в один ряд */
+  width: 100px;
+  height: 16px; /* Висота із запасом для збільшеної активної крапки */
+  margin: 0; /* Прибираємо авто-маржини, фіксуємо зліва на одній лінії зі стрілками */
 }
 
+/* Базовий та стандартний вигляд сірих крапок */
 .feedback-pagination .swiper-pagination-bullet {
+  display: inline-block; /* Обов'язково, щоб у крапок з'явився розмір */
   width: 8px;
   height: 8px;
-  background-color: var(--color-neutral-lighter);
+  margin: 0 4px; /* Рівномірні відступи між крапками в рядку */
+  background-color: var(--color-neutral-light);
   border-radius: 50%;
-  opacity: 1;
+  opacity: 0.5;
   cursor: pointer;
-  margin-left: var(--swiper-pagination-bullet-horizontal-margin);
-  margin-right: var(--swiper-pagination-bullet-horizontal-margin);
   transition:
-    background-color 0.2s,
-    transform 0.2s;
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    background-color 0.3s ease;
 }
 
+/* Активна крапка */
 .feedback-pagination .swiper-pagination-bullet-active {
+  opacity: 1;
   background-color: var(--color-neutral-darkest);
+  transform: scale(1.2);
 }
+
+/* Наступні та попередні головні крапки залишаємо у стандартному розмірі макету */
+.feedback-pagination .swiper-pagination-bullet-active-main {
+  transform: scale(1);
+}
+
+.feedback-pagination .swiper-pagination-bullet-active-prev,
+.feedback-pagination .swiper-pagination-bullet-active-next {
+  transform: scale(0.8); /* Сусідні крапки стають меншими */
+  opacity: 0.4;
+}
+
+/* Тільки найвіддаленіші крапки на краях контейнера будуть плавно зменшуватися, показуючи скрол */
+.feedback-pagination .swiper-pagination-bullet-active-prev-prev,
+.feedback-pagination .swiper-pagination-bullet-active-next-next {
+  transform: scale(0.6); /* Крайні видимі крапки стають зовсім крихітними */
+  opacity: 0.2;
+}
+/* --------------------------------------------------------- */
+/* ---END--- БЛОК ПАГІНАЦІЇ (МОБІЛЬНА ВЕРСІЯ - ДО 767px)-----*/
+/* --------------------------------------------------------- */
 
 .feedback-arrows-group {
   display: flex;
-  gap: 8px;
+  gap: 16px;
 }
 
 /* 
-   ==========================================================================
-   ОНОВЛЕНІ КНОПКИ ТА СТРІЛКИ НАВІГАЦІЇ СУВОРО ЗА МАКЕТОМ UI KIT
-   ==========================================================================
+  ===============================================================
+  КНОПКИ ТА СТРІЛКИ НАВІГАЦІЇ ЗА МАКЕТОМ UI KIT
+  ===============================================================
 */
 
 /* Стан 1: Normal (мобільна кнопка) */
@@ -220,18 +233,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   background-color: var(--color-scheme-1-background);
-  border: 1px solid var(--color-neutral-darkest); /* Чорна рамка */
+  border: 2px solid var(--color-neutral-darkest); /* Чорна рамка */
   border-radius: 50%;
   cursor: pointer;
+  padding: 12px;
   transition:
     background-color 0.2s,
     border-color 0.2s;
 }
 
-/* Стрілка у стані Normal залізобетонно чорна */
+/* Стрілка у стані Normal чорна */
 .feedback-mobile-arrow svg {
   fill: var(--color-neutral-darkest, #080c0c);
   transition: fill 0.2s ease;
@@ -276,23 +290,17 @@
   display: none;
 }
 
-/* ==========================================================================
+/* 
+  ========================================================
    2. TABLET STYLES (Точка перелому з 768px)
-   ========================================================================== */
-@media screen and (min-width: 768px) {
-  .feedback-section {
-    padding-top: unset;
-    padding-bottom: unset;
-  }
+  ======================================================== 
+*/
 
+@media screen and (min-width: 768px) {
   .feedback-container {
-    margin-top: 64px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
-  /* .container {
-    max-width: 768px;
-    padding-left: 24px;
-    padding-right: 24px;
-  } */
 
   .feedback-title-wrapper {
     margin-bottom: 40px;
@@ -300,23 +308,70 @@
 
   .feedback-slider-container {
     height: 233px;
+    margin-bottom: 48px;
   }
 
   .feedback-slider-wrapper {
-    height: 233px;
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    height: auto;
   }
 
-  .feedback-controls {
-    margin-top: 48px;
-    justify-content: center;
+  .feedback-description {
+    margin-left: 12px;
   }
-  .feedback-pagination {
-    margin-bottom: 64px;
+
+  /* ізольований контейнер для скролу довгого тексту відгуку */
+  .feedback-scroll-wrap {
+    margin-bottom: 14px; /* Захисний фіксований відступ перед ім'ям автора */
+    padding-bottom: 8px;
   }
 
   .feedback-arrows-group {
     display: none;
   }
+
+  /* -------------------------------------------------------- */
+  /* ---START----БЛОК ПАГІНАЦІЇ (TABLET STYLES - з 768px)---- */
+  /* -------------------------------------------------------- */
+
+  .feedback-controls {
+    justify-content: center;
+    /* margin-top: 32px; */
+  }
+
+  /* Повертаємо пагінацію в класичний flex-ряд по центру сторінки */
+  .feedback-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+    overflow: visible;
+    white-space: normal;
+  }
+
+  /* Гарантовано повертаємо стандартний розмір крапок 8px на 8px без використання !important */
+  .feedback-controls .feedback-pagination .swiper-pagination-bullet {
+    display: block;
+    width: 8px; /* Стандартний розмір за замовчуванням */
+    height: 8px; /* Стандартний розмір за замовчуванням */
+    margin: 0; /* Обнуляємо мобільні інлайнові відступи */
+    transform: none; /* Повністю вимикаємо будь-які збільшення/зменшення */
+    opacity: 0.5;
+  }
+
+  /* Активна чорна крапка на великих екранах */
+  .feedback-controls .feedback-pagination .swiper-pagination-bullet-active {
+    background-color: var(--color-scheme-1-text);
+    opacity: 1;
+    transform: none; /* Жодного збільшення на десктопі, рівний ряд за макетом */
+  }
+
+  /* --------------------------------------------------------- */
+  /* ---END--- БЛОК ПАГІНАЦІЇ (TABLET STYLES - з 768px)--------*/
+  /* --------------------------------------------------------- */
 
   /* Стан 1: Normal (велика десктопна кнопка) */
   .feedback-slider-wrapper > .feedback-arrow {
@@ -324,21 +379,23 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 50%;
+    /* top: 50%; */
+    top: 116.5px; /*  горизонтальна вісь карток відгуків */
     transform: translateY(-50%);
     z-index: 10;
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     background-color: var(--color-scheme-1-background);
-    border: 1px solid var(--color-neutral-darkest); /* Чорна рамка */
+    border: 2px solid var(--color-neutral-darkest); /* Чорна рамка */
     border-radius: 50%;
     cursor: pointer;
+    padding: 12px;
     transition:
       background-color 0.2s,
       border-color 0.2s;
   }
 
-  /* Стрілка у стані Normal залізобетонно чорна */
+  /* Стрілка у стані Normal чорна */
   .feedback-slider-wrapper > .feedback-arrow svg {
     fill: var(--color-neutral-darkest, #080c0c);
     transition: fill 0.2s ease;
@@ -386,29 +443,49 @@
   .feedback-slider-wrapper > .feedback-arrow-next {
     right: -22px;
   }
+
+  .feedback-slider-container > .feedback-list > .feedback-card {
+    padding: 16px;
+  }
+
+  /* Робимо смугу скролу тонкою та акуратною під колір UI Kit */
+  .feedback-scroll-wrap::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  .feedback-scroll-wrap::-webkit-scrollbar-thumb {
+    border-left: 3px solid transparent; /* Прозора зона розширення кліку ліворуч */
+    border-right: 3px solid transparent; /* Прозора зона розширення кліку праворуч */
+    border-radius: 60%;
+  }
 }
 
-/* ==========================================================================
+/*
+  ================================================================
    3. DESKTOP STYLES (Точка перелому з 1440px)
-   ========================================================================== */
+  ================================================================
+*/
+
 @media screen and (min-width: 1440px) {
-  .container {
-    max-width: 1440px;
-    padding-left: 40px;
-    padding-right: 40px;
+  .feedback-container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .feedback-title-wrapper {
+    margin-bottom: 80px;
+  }
+
+  .feedback-description {
+    margin-left: 0px;
   }
 
   .feedback-slider-wrapper {
-    height: 233px;
-  }
-
-  .feedback-controls {
-    margin-top: 48px;
+    height: auto;
   }
 
   .feedback-slider-wrapper > .feedback-arrow {
-    width: 48px;
-    height: 48px;
+    top: 116.5px;
   }
 
   .feedback-slider-wrapper > .feedback-arrow-prev {
@@ -417,5 +494,20 @@
 
   .feedback-slider-wrapper > .feedback-arrow-next {
     right: -24px;
+  }
+
+  .feedback-slider-container > .feedback-list > .feedback-card {
+    padding: 32px;
+  }
+
+  /* Робимо смугу скролу тонкою та акуратною під колір UI Kit */
+  .feedback-scroll-wrap::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .feedback-scroll-wrap::-webkit-scrollbar-thumb {
+    border-left: 1px solid transparent; /* Прозора зона розширення кліку ліворуч */
+    border-right: 1px solid transparent; /* Прозора зона розширення кліку праворуч */
+    border-radius: 60%;
   }
 }

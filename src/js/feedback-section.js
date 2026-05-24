@@ -2,12 +2,15 @@ import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 
 import 'swiper/css';
+import 'swiper/css/pagination'; // Додайте цей рядок під базовим CSS Swiper
 import { fetchFeedbacks } from './services/api/api.js';
 
 import { generateStarsTemplate } from './utils/stars.js';
+import { showLoader, hideLoader } from './utils/loader.js';
+import { showErrorToast } from './utils/toast.js';
+// import iconsUrl from '../img/icons.svg';
 
 const listEl = document.getElementById('feedback-list');
-
 
 /**
  * Динамічний рендеринг карток з інтегрованими SVG зірочками
@@ -24,8 +27,8 @@ function renderCards(items) {
               ${starsTemplate}
             </div>
           </div>
-          <div class="feedback-scroll-wrap">
-             <p class="feedback-description">"${description}"</p>
+          <div class="feedback-scroll-wrap swiper-no-swiping">
+            <p class="feedback-description">"${description.trim()}"</p>
           </div>
           <p class="feedback-author">${author}</p>
         </li>
@@ -44,9 +47,8 @@ function initFeedbackSlider() {
     spaceBetween: 20,
     allowTouchMove: true,
     grabCursor: true,
-    autoHeight: false,
+    autoHeight: false, // Swiper автоматично деактивує кнопки на краях для обох класів через кому
 
-    // Swiper автоматично деактивує кнопки на краях для обох класів через кому
     navigation: {
       nextEl: '.feedback-arrow-next, .feedback-mobile-arrow-next',
       prevEl: '.feedback-arrow-prev, .feedback-mobile-arrow-prev',
@@ -55,38 +57,22 @@ function initFeedbackSlider() {
     pagination: {
       el: '.feedback-pagination',
       clickable: true,
-      dynamicBullets: true,
-      dynamicMainBullets: 4,
-    },
-
-    on: {
-      breakpoint: function (swiper) {
-        setTimeout(() => {
-          swiper.pagination.destroy();
-          swiper.pagination.init();
-          swiper.pagination.render();
-          swiper.pagination.update();
-        }, 10);
-      },
-      resize: function (swiper) {
-        swiper.pagination.update();
-      },
     },
 
     breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 24,
+      },
       768: {
         slidesPerView: 3,
         spaceBetween: 24,
-        pagination: {
-          dynamicBullets: false,
-        },
+        dynamicBullets: false,
       },
       1440: {
         slidesPerView: 3,
         spaceBetween: 24,
-        pagination: {
-          dynamicBullets: false,
-        },
+        dynamicBullets: false,
       },
     },
   });
@@ -94,6 +80,7 @@ function initFeedbackSlider() {
 
 async function loadFeedbacks() {
   try {
+    showLoader();
     const response = await fetchFeedbacks({ page: 1, limit: 10 });
     const feedbacks = response.data.feedbacks;
 
@@ -102,7 +89,9 @@ async function loadFeedbacks() {
     renderCards(feedbacks);
     initFeedbackSlider();
   } catch (error) {
-    console.error('Помилка завантаження відгуків:', error);
+    showErrorToast('Не вдалося завантажити відгуки:', error);
+  } finally {
+    hideLoader();
   }
 }
 
