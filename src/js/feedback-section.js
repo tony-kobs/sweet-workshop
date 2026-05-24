@@ -13,9 +13,6 @@ import { showErrorToast } from './utils/toast.js';
 const FEEDBACKS_LIMIT = 10; // Кількість відгуків (карток)
 const FEEDBACKS_PAGE = 1; // Поточна сторінка запиту
 
-// Глобальна змінна для контролю єдиного екземпляра слайдера у Vite
-let feedbackSwiperInstance = null;
-
 const listEl = document.getElementById('feedback-list');
 
 /**
@@ -56,8 +53,7 @@ function initFeedbackSlider() {
     window.feedbackSwiperInstance = null;
   }
 
-  // Викликаємо构造тор екземпляра Swiper, який був імпортований з бібліотеки,
-  // або підстраховуємося глобальним класом window.Swiper для повної сумісності зі збіркою Vite
+  // Викликаємо конструктор екземпляра Swiper підстраховуючись глобальним класом window
   const SwiperConstructor = Swiper || window.Swiper;
 
   if (!SwiperConstructor) {
@@ -68,18 +64,17 @@ function initFeedbackSlider() {
   window.feedbackSwiperInstance = new SwiperConstructor(
     '.feedback-slider-container',
     {
-      modules: [Navigation, Pagination, Keyboard], // Модуль активовано
+      modules: [Navigation, Pagination, Keyboard],
       slidesPerView: 1,
       spaceBetween: 20,
       allowTouchMove: true,
       grabCursor: true,
       autoHeight: false,
 
-      // Параметри керування стрілками клавіатури
       keyboard: {
-        enabled: true, // Дозволяє гортати слайди
-        onlyInViewport: true, // Працює тільки коли користувач бачить секцію
-        pageUpDown: false, // Захищає від стрибків сторінки
+        enabled: true,
+        onlyInViewport: true,
+        pageUpDown: false,
       },
 
       navigation: {
@@ -107,9 +102,9 @@ function initFeedbackSlider() {
         },
       },
 
-      // Використовуємо єдину правильну подію Swiper v12 — paginationRender
-      // Вона спрацьовує строго ПІСЛЯ появи тегів у HTML і гарантовано видаляє фантоми до 10 штук при будь-якому ресайзі
+      // Об'єкт подій Swiper v12
       on: {
+        // Видаляє фантомні крапки пагінації при первинній появі в HTML
         paginationRender: function (swiper, paginationEl) {
           if (paginationEl) {
             const bullets = paginationEl.querySelectorAll(
@@ -122,6 +117,28 @@ function initFeedbackSlider() {
             }
           }
         },
+        // ДОДАНO: Слухач події перемикання слайдів для будь-якого способу навігації (клавіатура, крапки, тач)
+        slideChange: function (swiper) {
+          // Визначаємо, в який бік змістився індекс слайдера
+          const isNext = swiper.activeIndex > (swiper.previousIndex || 0);
+
+          // Шукаємо активну пару стрілок (десктопні або мобільні) залежно від напрямку руху
+          const activeArrows = isNext
+            ? document.querySelectorAll(
+                '.feedback-arrow-next, .feedback-mobile-arrow-next'
+              )
+            : document.querySelectorAll(
+                '.feedback-arrow-prev, .feedback-mobile-arrow-prev'
+              );
+
+          // Додаємо тимчасовий кастомний CSS-клас стану АКТИВ (.is-active) на стрілки
+          activeArrows.forEach(arrow => arrow.classList.add('is-active'));
+
+          // Через 200 мілісекунд плавно прибираємо підсвітку, імітуючи чистий клік
+          setTimeout(() => {
+            activeArrows.forEach(arrow => arrow.classList.remove('is-active'));
+          }, 200);
+        },
       },
     }
   );
@@ -131,49 +148,41 @@ async function loadFeedbacks() {
   try {
     showLoader(); // Вмикаємо лоадер на початку асинхронного процесу
 
-    // Очищаємо статичну картку-заглушку з HTML, щоб лоадер крутився на порожньому місці
     if (listEl) {
       listEl.innerHTML = '';
     }
 
-    // Примусово очищаємо HTML-контейнер пагінації перед новим запуском
     const paginationEl = document.querySelector('.feedback-pagination');
     if (paginationEl) {
       paginationEl.innerHTML = '';
     }
 
-    // Передаємо параметри у первісному плоскому вигляді, як вимагає ваш кастомний api.js
     const response = await fetchFeedbacks({
       page: Number(FEEDBACKS_PAGE),
       limit: Number(FEEDBACKS_LIMIT),
     });
 
-    // Гнучко розпаковуємо масив відгуків від вашого сервісу Axios
     const feedbacks =
       response?.data?.feedbacks ||
       response?.feedbacks ||
       response?.data ||
       response;
 
-    // Якщо дані успішно прийшли та розпарсилися в масив
     if (Array.isArray(feedbacks) && feedbacks.length > 0) {
-      // Малюємо динамічні картки та запускаємо чисту пагінацію Swiper
       renderCards(feedbacks);
       initFeedbackSlider();
     }
   } catch (error) {
-    //Динамічно витягуємо код помилки (наприклад, 400, 404, 500) або системний статус мережі
     const errorCode =
       error?.response?.status ||
       error?.status ||
       error?.code ||
       'Network Error';
-
     showErrorToast(
       `Не вдалося завантажити відгуки клієнтів. Спробуйте пізніше. (${errorCode})`
     );
   } finally {
-    hideLoader();
+    hideLoader(); // Гарантовано відключаємо лоадер після завершення процесу
   }
 }
 
