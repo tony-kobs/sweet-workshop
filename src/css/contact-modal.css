@@ -72,17 +72,6 @@
   line-height: 1.5;
   color: var(--opacity-neutral-darkest-60);
 }
-.modal-order-input:invalid:not(:placeholder-shown),
-.modal-order-input:invalid:focus:not(:placeholder-shown),
-.modal-order-input:invalid:active:not(:placeholder-shown),
-.modal-order-textarea:invalid:not(:placeholder-shown),
-.modal-order-textarea:invalid:focus:not(:placeholder-shown),
-.modal-order-textarea:invalid:active:not(:placeholder-shown) {
-  border: 2px solid var(--red);
-  outline: none;
-  color: var(--red);
-  background: var(--opacity-transparent);
-}
 .modal-order-textarea {
   min-height: 180px;
   width: 100%;
@@ -139,13 +128,29 @@
   background: var(--color-wewak);
   opacity: 0.3;
 }
+.emptyInput {
+  border: 2px solid var(--color-wewak);
+  background: var(--opacity-transparent);
+}
+
+.modal-order-input.invalidInput,
+.modal-order-input:invalid:not(:placeholder-shown),
+.modal-order-input:invalid:focus:not(:placeholder-shown),
+.modal-order-input:invalid:active:not(:placeholder-shown),
+.modal-order-textarea:invalid:not(:placeholder-shown),
+.modal-order-textarea:invalid:focus:not(:placeholder-shown),
+.modal-order-textarea:invalid:active:not(:placeholder-shown) {
+  border: 2px solid var(--red);
+  outline: none;
+  -webkit-text-fill-color:var(--red) !important;
+  color: var(--red);
+  background: var(--opacity-transparent);
+}
 
 .hidden {
   display: none;
 }
-/* body{
-    overflow: hidden;
-} */
+
 @media (min-width: 768px) {
   .modal-order-overlay {
     padding: 64px 32px;
