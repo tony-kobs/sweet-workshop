@@ -2,6 +2,7 @@
     padding: 64px 0;
     display: flex;
     align-items: center;
+    background-color: var(--background-color);
 }
 
 .about-us-container {
@@ -42,7 +43,6 @@
     width: 100%;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
 .about-us-slide {
@@ -51,6 +51,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 16px;
+    overflow: hidden;
 }
 
 .about-us-slide img {
@@ -119,11 +121,16 @@
 /* Пагінація */
 .about-us-pagination {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     position: static;
-    width: auto;
+    width: 8px;
+    height: 8px;
+    margin: 0 auto;
     align-items: center;
+    padding: 4px;
+    justify-content: center;
 }
+
 
 .about-us-pagination .swiper-pagination-bullet {
     width: 8px;
@@ -147,9 +154,7 @@
 
 /* Адаптивність (Мобільна версія) */
 @media (max-width: 768px) {
-    .about-us {
-        padding: 40px 0;
-    }
+
 
     .about-us-container {
         flex-direction: column;
