@@ -1,14 +1,9 @@
-import Swiper from 'swiper';
-import { Navigation, Pagination, Keyboard } from 'swiper/modules';
-
-import 'swiper/css';
-import 'swiper/css/pagination'; // Додайте цей рядок під базовим CSS Swiper
 import { fetchFeedbacks } from './services/api/api.js';
-import { getUnifiedPaginationConfig } from './utils/common-swiper.js';
-
 import { generateStarsTemplate } from './utils/stars.js';
 import { showLoader, hideLoader } from './utils/loader.js';
 import { showErrorToast } from './utils/toast.js';
+
+import { createFeedbackSlider, destroySwiper } from './utils/common-swiper.js';
 
 // КОНСТАНТИ ДЛЯ ЗРУЧНОГО КЕРУВАННЯ ДАНИМИ З БЕКЕНДУs
 const FEEDBACKS_LIMIT = 10; // Кількість відгуків (карток)
@@ -44,102 +39,29 @@ function renderCards(items) {
  * Ініціалізація Swiper.js з повною автоматизацією станів disabled для навігації
  */
 function initFeedbackSlider() {
-  // Зберігаємо та знищуємо екземпляр через об'єкт window
-  // Це єдиний залізобетонний захист від дублювання крапок та зависання запитів при HMR оновленнях
-  if (
-    window.feedbackSwiperInstance &&
-    typeof window.feedbackSwiperInstance.destroy === 'function'
-  ) {
-    window.feedbackSwiperInstance.destroy(true, true);
-    window.feedbackSwiperInstance = null;
-  }
+  destroySwiper(window.feedbackSwiperInstance);
 
-  // Викликаємо конструктор екземпляра Swiper підстраховуючись глобальним класом window
-  const SwiperConstructor = Swiper || window.Swiper;
+  window.feedbackSwiperInstance = null;
 
-  if (!SwiperConstructor) {
-    return;
-  }
-
-  // Створюємо чистий слайдер строго під отриманий масив даних
-  window.feedbackSwiperInstance = new SwiperConstructor(
+  window.feedbackSwiperInstance = createFeedbackSlider(
     '.feedback-slider-container',
     {
-      modules: [Navigation, Pagination, Keyboard],
-      slidesPerView: 1,
-      spaceBetween: 20,
-      allowTouchMove: true,
-      grabCursor: true,
-      autoHeight: false,
+      slideChange(swiper) {
+        const isNext = swiper.activeIndex > (swiper.previousIndex || 0);
 
-      keyboard: {
-        enabled: true,
-        onlyInViewport: true,
-        pageUpDown: false,
-      },
-
-      navigation: {
-        nextEl: '.feedback-arrow-next, .feedback-mobile-arrow-next',
-        prevEl: '.feedback-arrow-prev, .feedback-mobile-arrow-prev',
-      },
-
-      pagination: {
-        el: '.feedback-pagination',
-        clickable: true,
-      },
-
-      breakpoints: {
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 24,
-        },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 24,
-        },
-        1440: {
-          slidesPerView: 3,
-          spaceBetween: 24,
-        },
-      },
-
-      // Об'єкт подій Swiper v12
-      on: {
-        // Видаляє фантомні крапки пагінації при первинній появі в HTML
-        paginationRender: function (swiper, paginationEl) {
-          if (paginationEl) {
-            const bullets = paginationEl.querySelectorAll(
-              '.swiper-pagination-bullet'
+        const activeArrows = isNext
+          ? document.querySelectorAll(
+              '.feedback-arrow-next, .feedback-mobile-arrow-next'
+            )
+          : document.querySelectorAll(
+              '.feedback-arrow-prev, .feedback-mobile-arrow-prev'
             );
-            if (bullets.length > FEEDBACKS_LIMIT) {
-              for (let i = FEEDBACKS_LIMIT; i < bullets.length; i++) {
-                bullets[i].remove();
-              }
-            }
-          }
-        },
-        // ДОДАНO: Слухач події перемикання слайдів для будь-якого способу навігації (клавіатура, крапки, тач)
-        slideChange: function (swiper) {
-          // Визначаємо, в який бік змістився індекс слайдера
-          const isNext = swiper.activeIndex > (swiper.previousIndex || 0);
 
-          // Шукаємо активну пару стрілок (десктопні або мобільні) залежно від напрямку руху
-          const activeArrows = isNext
-            ? document.querySelectorAll(
-                '.feedback-arrow-next, .feedback-mobile-arrow-next'
-              )
-            : document.querySelectorAll(
-                '.feedback-arrow-prev, .feedback-mobile-arrow-prev'
-              );
+        activeArrows.forEach(arrow => arrow.classList.add('is-active'));
 
-          // Додаємо тимчасовий кастомний CSS-клас стану АКТИВ (.is-active) на стрілки
-          activeArrows.forEach(arrow => arrow.classList.add('is-active'));
-
-          // Через 200 мілісекунд плавно прибираємо підсвітку, імітуючи чистий клік
-          setTimeout(() => {
-            activeArrows.forEach(arrow => arrow.classList.remove('is-active'));
-          }, 200);
-        },
+        setTimeout(() => {
+          activeArrows.forEach(arrow => arrow.classList.remove('is-active'));
+        }, 200);
       },
     }
   );
