@@ -109,5 +109,21 @@ async function loadFeedbacks() {
   }
 }
 
-// Запуск головного асинхронного процесу завантаження
-loadFeedbacks();
+document.addEventListener('DOMContentLoaded', () => {
+  const section = document.querySelector('.feedback-section') || document.querySelector('#feedback-section') || document.querySelector('.feedback-slider-container');
+  if (!section) {
+    loadFeedbacks();
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        loadFeedbacks();
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '300px' });
+
+  observer.observe(section);
+});

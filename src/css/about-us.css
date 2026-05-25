@@ -118,28 +118,7 @@
   pointer-events: none;
 }
 
-.about-us-pagination .swiper-pagination-bullet {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin: 0 4px;
-  border-radius: 50%;
-  opacity: 0.5;
-  cursor: pointer;
-  transition:
-    transform 0.3s ease,
-    opacity 0.3s ease,
-    background-color 0.3s ease;
-}
 
-.about-us-pagination .swiper-pagination-bullet:hover {
-  background-color: var(--color-scheme-1-hover);
-}
-
-.about-us-pagination .swiper-pagination-bullet-active {
-  background-color: var(--color-neutral-darkest);
-  opacity: 1;
-}
 
 @media (max-width: 768px) {
   .about-us-container {

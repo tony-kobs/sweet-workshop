@@ -24,7 +24,7 @@ function renderCards(items) {
     .map(
       ({ _id, image, category, name, description, price }) => `
     <li class="dessert-item" data-id="${_id}">
-      <img
+      <img loading="lazy"
         src="${image}"
         alt="${name}"
         class="dessert-image"
