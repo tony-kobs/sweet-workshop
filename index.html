@@ -22,93 +22,117 @@
     <link rel="modulepreload" crossorigin href="/sweet-deploy-team/assets/rolldown-runtime-QTnfLwEv.js">
     <link rel="modulepreload" crossorigin href="/sweet-deploy-team/assets/vendor-o1m5MCqf.js">
     <link rel="stylesheet" crossorigin href="/sweet-deploy-team/assets/vendor-C7-kpNB9.css">
-    <link rel="stylesheet" crossorigin href="/sweet-deploy-team/assets/index-DKUpi29J.css">
+    <link rel="stylesheet" crossorigin href="/sweet-deploy-team/assets/index-DKX0yyQw.css">
   </head>
   <body>
     <header class="header">
   <div class="header-container">
-
     <a href="index.html" class="logo-link" aria-label="Головна сторінка">
       <svg class="logo-svg" width="146px" height="31px">
         <use href="/sweet-deploy-team/assets/icons-CnkChGia.svg#icon-logo"></use>
       </svg>
     </a>
 
+    <nav class="nav-menu">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="#dessert-list-section" class="nav-link">Солодощі</a>
+        </li>
+        <li class="nav-item"><a href="#about" class="nav-link">Про нас</a></li>
+        <li class="nav-item">
+          <a href="#reviews" class="nav-link">Відгуки</a>
+        </li>
+        <li class="nav-item">
+          <a href="#faq" class="nav-link">Часті питання</a>
+        </li>
+      </ul>
+      <a href="#dessert-list-section" class="btn-action">До покупок</a>
+    </nav>
     <button class="burger-btn" id="burgerToggle" aria-label="Відкрити меню">
       <svg class="menu-icon" width="24px" height="24px">
         <use href="/sweet-deploy-team/assets/icons-CnkChGia.svg#icon-menu"></use>
       </svg>
     </button>
 
-    <nav class="nav-menu" id="menu">
+    <div class="nav-menu-overlay" id="menu">
+      <div class="container">
+        <div class="menu-mobile-header">
+          <a href="#" class="logo-link" aria-label="Головна сторінка">
+            <svg class="logo-svg" width="146px" height="31px">
+              <use href="/sweet-deploy-team/assets/icons-CnkChGia.svg#icon-logo"></use>
+            </svg>
+          </a>
 
-      <div class="menu-mobile-header">
-        <a href="#" class="logo-link" aria-label="Головна сторінка">
-          <svg class="logo-svg" width="146px" height="31px">
-            <use href="/sweet-deploy-team/assets/icons-CnkChGia.svg#icon-logo"></use>
-          </svg>
-        </a>
+          <button class="close-btn" id="burgerClose" aria-label="Закрити меню">
+            <svg class="close-icon" width="24px" height="24px">
+              <use href="/sweet-deploy-team/assets/icons-CnkChGia.svg#icon-close"></use>
+            </svg>
+          </button>
+        </div>
 
-        <button class="close-btn" id="burgerClose" aria-label="Закрити меню">
-          <svg class="close-icon" width="24px" height="24px">
-            <use href="/sweet-deploy-team/assets/icons-CnkChGia.svg#icon-close"></use>
-          </svg>
-        </button>
+        <div class="nav-links-wrapper">
+          <a href="#dessert-list-section" class="nav-link">Солодощі</a>
+          <a href="#about" class="nav-link">Про нас</a>
+          <a href="#reviews" class="nav-link">Відгуки</a>
+          <a href="#faq" class="nav-link">Часті питання</a>
+        </div>
+
+        <a href="#dessert-list-section" class="btn-action">До покупок</a>
       </div>
-
-      <div class="nav-links-wrapper">
-        <a href="#dessert-list-section" class="nav-link">Солодощі</a>
-        <a href="#about" class="nav-link">Про нас</a>
-        <a href="#reviews" class="nav-link">Відгуки</a>
-        <a href="#faq" class="nav-link">Часті питання</a>
-      </div>
-
-      <a href="#dessert-list-section" class="btn-action">До покупок</a>
-    </nav>
-
-  </div> 
+    </div>
+  </div>
 </header>
-
-
 
 
     <main>
       
       <section class="popular-products">
-    <div class="container">
-        <h2 class="popular-title">Наші бестселлери</h2>
+  <div class="container">
+    <h2 class="popular-title">Наші бестселлери</h2>
 
-       
-        <div class="swiper popular-swiper">
-            <div class="swiper-wrapper" id="popular-products-list">
-               
-            </div>
+    <div class="swiper popular-swiper">
+      <div class="swiper-wrapper" id="popular-products-list"></div>
 
-            
-            <div class="popular-controls-wrapper">
-                
-                <div class="swiper-pagination popular-pagination"></div>
+      <div class="popular-controls-wrapper">
+        <div class="swiper-pagination popular-pagination"></div>
 
-               
-                <div class="popular-nav-buttons">
-                    <button type="button" class="popular-nav-btn-prev" aria-label="Попередній слайд">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <use href="/sweet-deploy-team/assets/icons-CnkChGia.svg#icon-arrow_back"></use>
-                        </svg>
-                    </button>
-
-                    <button type="button" class="popular-nav-btn-next" aria-label="Наступний слайд">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <use href="/sweet-deploy-team/assets/icons-CnkChGia.svg#icon-arrow_forward">
-                        </svg>
-                    </button>
-                </div>
-            </div>
+        <div class="popular-nav-buttons">
+          <button
+            type="button"
+            class="popular-nav-btn-prev"
+            aria-label="Попередній слайд"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <use href="/sweet-deploy-team/assets/icons-CnkChGia.svg#icon-arrow_back"></use>
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="popular-nav-btn-next"
+            aria-label="Наступний слайд"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <use href="/sweet-deploy-team/assets/icons-CnkChGia.svg#icon-arrow_forward"></use>
+            </svg>
+          </button>
         </div>
-
+      </div>
     </div>
+  </div>
 </section>
 
       <section class="dessert-list-section" id="dessert-list-section">
