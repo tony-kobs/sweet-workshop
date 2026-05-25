@@ -1,6 +1,4 @@
-/**
- * Автоматична генерація ЖИРНИХ inline-SVG зірочок суворо з кроком округлення 0.5 за ТЗ
- */
+
 export function generateStarsTemplate(
   rate,
   slideId = '',

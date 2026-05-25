@@ -1,8 +1,4 @@
-/* 
-  ==========================================================================
-   1. MOBILE STYLES (від 320px до 767px)
-  ========================================================================== 
-*/
+
 .feedback-title-wrapper {
   display: flex;
   flex-direction: column;
@@ -17,7 +13,6 @@
 
 .feedback-list-subtitle {
   font-size: 18px;
-  /* color: var(--color-neutral-dark); */
 }
 
 .feedback-slider-wrapper {
@@ -29,7 +24,7 @@
 .feedback-slider-container {
   overflow: hidden;
   width: 100%;
-  height: 208px; /* Фіксована висота контейнера на моб */
+  height: 208px;
   margin-bottom: 32px;
   box-sizing: content-box;
 }
@@ -94,41 +89,40 @@
   font-weight: 600;
   font-size: 16px;
   color: var(--color-neutral-darkest);
-  margin-top: auto; /* фіксує ім'я автора в самому низу картки */
+  margin-top: auto; 
   text-align: left;
 }
 
-/* ізольований контейнер для скролу довгого тексту відгуку */
 .feedback-scroll-wrap {
   width: 100%;
-  flex-grow: 1; /* Займає весь вільний простір, штовхаючи автора вниз */
-  overflow-y: scroll; /* scroll для примусової активації контейнера прокрутки */
-  -webkit-overflow-scrolling: touch; /* Вмикає плавний інерційний скрол для iOS при русі рукою */
-  margin-bottom: 15px; /* Захисний фіксований відступ перед ім'ям автора */
+  flex-grow: 1; 
+  overflow-y: scroll; 
+  -webkit-overflow-scrolling: touch; 
+  margin-bottom: 15px; 
   padding-bottom: 10px;
-  padding-right: 10px; /* Невеликий простір, щоб смуга скролу не тисла на текст */
-  overscroll-behavior: contain; /* Гортається лише текст, сторінка при цьому стоїть на місці */
+  padding-right: 10px; 
+  overscroll-behavior: contain;
 
-  /* ---------------------------------------------------------------- */
-  /* --- СКРОЛ РУКОЮ по бігунку НА ТЕЛЕФОНАХ ТА МИШКОЮ НА КОМП'ЮТЕРАХ */
-  /* ---------------------------------------------------------------- */
+ 
+ 
+ 
   touch-action: pan-y;
   cursor: pointer;
   cursor: grab;
 
-  /* Заборона синього виділення літер при затисканні та веденні мишкою */
+ 
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
 
-/* Коли користувач реально затискає мишку для прокрутки контенту */
+
 .feedback-scroll-wrap:active {
-  cursor: grabbing; /* Іконка стиснутого кулака */
+  cursor: grabbing;
 }
 
-/* Робимо смугу скролу тонкою */
+
 .feedback-scroll-wrap::-webkit-scrollbar {
   width: 9px;
 }
@@ -138,81 +132,74 @@
 .feedback-scroll-wrap::-webkit-scrollbar-thumb {
   background-color: var(--color-neutral-lighter, #e3e3e3);
   background-clip: padding-box;
-  border-left: 3px solid transparent; /* Прозора зона розширення кліку ліворуч */
-  border-right: 3px solid transparent; /* Прозора зона розширення кліку праворуч */
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
   border-radius: 70%;
 
   transition: background-color 0.2s;
 }
 
-/* При наведенні миші саме на зону скролбару він стає помітнішим і темнішим */
+
 .feedback-scroll-wrap::-webkit-scrollbar-thumb:hover {
   background-color: var(--color-neutral-dark, #a1a1a1);
 }
 
-/* ==========================================================================
-   БЛОК ПАГІНАЦІЯ: ГЛОБАЛЬНЕ ОБНУЛЕННЯ ЗМІННИХ SWIPER (БЕЗ !IMPORTANT)
-   ==========================================================================
-*/
 
 
 
-/* ------------------------------------------------------------- */
-/* ---START----БЛОК ПАГІНАЦІЇ (МОБІЛЬНА ВЕРСІЯ - ДО 767px)------ */
-/* ------------------------------------------------------------- */
 
-/* Контейнер для пагінації та мобільних стрілок */
+
+
+
+
+
 .feedback-controls {
   display: flex;
-  align-items: center; /* Центрує стрілки та блок пагінації строго по вертикальній осі */
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
   margin-top: 24px;
   width: 100%;
 }
 
-/* Обгортка пагінації з гнучкими налаштуваннями сітки */
+
 .feedback-pagination {
-  /* КОНСТРУКТОР СІТКИ ПАГІНАЦІЇ */
+ 
   --bullet-size: 8px;
   --bullet-gap: 9px;
 
-  /* Перевизначаємо внутрішні змінні Swiper нативним шляхом, БЕЗ !important */
+ 
   --swiper-pagination-bullet-horizontal-gap: 0px;
   --swiper-pagination-bullet-vertical-gap: 0px;
 
-  position: static; /* Нейтралізуємо absolute від Swiper, повертаючи в потік */
+  position: static;
   display: flex;
-  flex-wrap: wrap; /* Дозволяє крапкам переноситися на наступний рядок */
-  align-items: center; /* Центрує обидва рядки крапок по вертикалі відносно стрілок */
-  justify-content: flex-start; /* Вирівнювання крапок строго по лівому краю на мобілці */
-  gap: var(--bullet-gap); /* Нативний проміжний крок між елементами */
-  width: auto; /* Запобігає розтягуванню на 100% і дозволяє кнопкам бути поруч */
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--bullet-gap);
+  width: auto;
 
-  max-height: 28px; /* Обмеження висоти контейнера строго за ТЗ */
+  max-height: 28px;
   margin: 0;
   padding: 0;
 }
 
 
 
-/* --------------------------------------------------------- */
-/* ---END--- БЛОК ПАГІНАЦІЇ (МОБІЛЬНА ВЕРСІЯ - ДО 767px)-----*/
-/* --------------------------------------------------------- */
+
+
+
 
 .feedback-arrows-group {
   display: flex;
   gap: 16px;
-  margin-left: auto; /* Примусово відштовхує кнопки до правого краю */
+  margin-left: auto;
 }
 
-/* 
-  ===============================================================
-  КНОПКИ ТА СТРІЛКИ НАВІГАЦІЇ ЗА МАКЕТОМ UI KIT
-  ===============================================================
-*/
 
-/* Стан 1: Normal (мобільна кнопка) */
+
+
 .feedback-mobile-arrow {
   display: flex;
   align-items: center;
@@ -220,7 +207,7 @@
   width: 48px;
   height: 48px;
   background-color: var(--color-scheme-1-background);
-  border: 2px solid var(--color-neutral-darkest); /* Чорна рамка */
+  border: 2px solid var(--color-neutral-darkest);
   border-radius: 50%;
   cursor: pointer;
   padding: 12px;
@@ -229,13 +216,13 @@
     border-color 0.2s;
 }
 
-/* Стрілка у стані Normal чорна */
+
 .feedback-mobile-arrow svg {
   fill: var(--color-neutral-darkest, #080c0c);
   transition: fill 0.2s ease;
 }
 
-/* Стан 2: Hover/Focus-visible (мобільна кнопка стає рожевою) */
+
 .feedback-mobile-arrow:hover,
 .feedback-mobile-arrow:focus-visible {
   background-color: var(--color-wewak);
@@ -247,7 +234,7 @@
   fill: var(--color-neutral-darkest);
 }
 
-/* Стан 3: Active (мобільна кнопка при натисканні стає темнішою) */
+
 .feedback-mobile-arrow:active,
 .feedback-mobile-arrow-prev.is-active,
 .feedback-mobile-arrow-next.is-active {
@@ -259,28 +246,24 @@
   fill: var(--color-neutral-darkest);
 }
 
-/* Стан 4: Disabled (мобільна кнопка стає повністю сірою на краях слайдера) */
+
 .feedback-mobile-arrow:disabled,
 .feedback-mobile-arrow.swiper-button-disabled {
-  border-color: var(--color-neutral-lighter); /* Сіра рамка */
+  border-color: var(--color-neutral-lighter);
   background-color: var(--color-scheme-1-background);
   cursor: not-allowed;
 }
 
 .feedback-mobile-arrow:disabled svg,
 .feedback-mobile-arrow.swiper-button-disabled svg {
-  fill: var(--color-neutral-lighter); /* Сіра стрілка */
+  fill: var(--color-neutral-lighter);
 }
 
 .feedback-arrow {
   display: none;
 }
 
-/* 
-  ========================================================
-   2. TABLET STYLES (Точка перелому з 768px)
-  ======================================================== 
-*/
+
 
 @media screen and (min-width: 768px) {
   .feedback-container {
@@ -308,9 +291,9 @@
     margin-left: 12px;
   }
 
-  /* ізольований контейнер для скролу довгого тексту відгуку */
+ 
   .feedback-scroll-wrap {
-    margin-bottom: 14px; /* Захисний фіксований відступ перед ім'ям автора */
+    margin-bottom: 14px;
     padding-bottom: 8px;
   }
 
@@ -318,47 +301,47 @@
     display: none;
   }
 
-  /* -------------------------------------------------------- */
-  /* ---START----БЛОК ПАГІНАЦІЇ (TABLET STYLES - з 768px)---- */
-  /* -------------------------------------------------------- */
+ 
+ 
+ 
 
-  /* Перебудова блоку контролерів для вирівнювання пагінації строго по центру секції */
+ 
   .feedback-controls {
     justify-content: center;
     margin-top: 32px;
   }
 
-  /* Повернення пагінації в один горизонтальний довгий ряд по центру сторінки */
+ 
   .feedback-pagination {
-    justify-content: center; /* Центрує весь масив крапок на великих екранах */
-    flex-wrap: nowrap; /* Скасовує мобільне перенесення рядків, вибудовує все в одну лінію */
+    justify-content: center;
+    flex-wrap: nowrap;
     gap: var(
       --bullet-gap
-    ); /* Зберігаємо крок 9px для лінійності великих екранів */
-    width: auto; /* Знімаємо мобільне обмеження автоматичного розрахунку ширини */
-    max-height: 28px; /* Зберігаємо обмеження висоти контейнера строго за ТЗ */
+    );
+    width: auto;
+    max-height: 28px;
   }
 
 
 
-  /* --------------------------------------------------------- */
-  /* ---END--- БЛОК ПАГІНАЦІЇ (TABLET STYLES - з 768px)--------*/
-  /* --------------------------------------------------------- */
+ 
+ 
+ 
 
-  /* Стан 1: Normal (велика десктопна кнопка) */
+ 
   .feedback-slider-wrapper > .feedback-arrow {
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    /* top: 50%; */
-    top: 116.5px; /*  горизонтальна вісь карток відгуків */
+   
+    top: 116.5px;
     transform: translateY(-50%);
     z-index: 10;
     width: 48px;
     height: 48px;
     background-color: var(--color-scheme-1-background);
-    border: 2px solid var(--color-neutral-darkest); /* Чорна рамка */
+    border: 2px solid var(--color-neutral-darkest);
     border-radius: 50%;
     cursor: pointer;
     padding: 12px;
@@ -367,13 +350,13 @@
       border-color 0.2s;
   }
 
-  /* Стрілка у стані Normal чорна */
+ 
   .feedback-slider-wrapper > .feedback-arrow svg {
     fill: var(--color-neutral-darkest, #080c0c);
     transition: fill 0.2s ease;
   }
 
-  /* Стан 2: Hover/Focus-visible (десктопна кнопка стає рожевою) */
+ 
   .feedback-slider-wrapper > .feedback-arrow:hover,
   .feedback-slider-wrapper > .feedback-arrow:focus-visible {
     background-color: var(--color-wewak);
@@ -385,7 +368,7 @@
     fill: var(--color-neutral-darkest);
   }
 
-  /* Стан 3: Active (десктопна кнопка при натисканні стає темнішою) */
+ 
   .feedback-slider-wrapper > .feedback-arrow:active,
   .feedback-slider-wrapper > .feedback-arrow-prev.is-active,
   .feedback-slider-wrapper > .feedback-arrow-next.is-active {
@@ -397,17 +380,17 @@
     fill: var(--color-neutral-darkest);
   }
 
-  /* Стан 4: Disabled (десктопна кнопка стає повністю сірою на краях слайдера) */
+ 
   .feedback-slider-wrapper > .feedback-arrow:disabled,
   .feedback-slider-wrapper > .feedback-arrow.swiper-button-disabled {
-    border-color: var(--color-neutral-lighter); /* Сіра рамка */
+    border-color: var(--color-neutral-lighter);
     background-color: var(--color-scheme-1-background);
     cursor: not-allowed;
   }
 
   .feedback-slider-wrapper > .feedback-arrow:disabled svg,
   .feedback-slider-wrapper > .feedback-arrow.swiper-button-disabled svg {
-    fill: var(--color-neutral-lighter); /* Сіра стрілка */
+    fill: var(--color-neutral-lighter);
   }
 
   .feedback-slider-wrapper > .feedback-arrow-prev {
@@ -422,23 +405,19 @@
     padding: 16px;
   }
 
-  /* Робимо смугу скролу тонкою та акуратною під колір UI Kit */
+ 
   .feedback-scroll-wrap::-webkit-scrollbar {
     width: 9px;
   }
 
   .feedback-scroll-wrap::-webkit-scrollbar-thumb {
-    border-left: 3px solid transparent; /* Прозора зона розширення кліку ліворуч */
-    border-right: 3px solid transparent; /* Прозора зона розширення кліку праворуч */
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
     border-radius: 60%;
   }
 }
 
-/*
-  ================================================================
-   3. DESKTOP STYLES (Точка перелому з 1440px)
-  ================================================================
-*/
+
 
 @media screen and (min-width: 1440px) {
   .feedback-container {
@@ -474,14 +453,13 @@
     padding: 32px;
   }
 
-  /* Робимо смугу скролу тонкою та акуратною під колір UI Kit */
   .feedback-scroll-wrap::-webkit-scrollbar {
     width: 5px;
   }
 
   .feedback-scroll-wrap::-webkit-scrollbar-thumb {
-    border-left: 1px solid transparent; /* Прозора зона розширення кліку ліворуч */
-    border-right: 1px solid transparent; /* Прозора зона розширення кліку праворуч */
+    border-left: 1px solid transparent; 
+    border-right: 1px solid transparent; 
     border-radius: 60%;
   }
 }

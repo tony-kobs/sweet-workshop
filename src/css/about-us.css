@@ -33,7 +33,6 @@
   color: var(--text-color);
 }
 
-/* Галерея */
 .about-us-gallery {
   position: relative;
   width: 100%;
@@ -61,7 +60,6 @@
   object-fit: cover;
 }
 
-/* Елементи управління */
 .about-us-controls {
   display: flex;
   align-items: center;

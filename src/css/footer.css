@@ -1,4 +1,4 @@
-/*--- Footer Styles mobile --*/
+
 
 .footer {
   background: var(--color-scheme-3-background);
@@ -168,7 +168,7 @@
   width: 100%;
 }
 
-/*  ---Планшет   ----*/
+
 
 @media (min-width: 768px) {
   .footer .container {
@@ -186,7 +186,7 @@
   }
 }
 
-/*  ---Десктоп   ----*/
+
 
 @media (min-width: 1440px) {
   .footer .container {

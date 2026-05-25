@@ -18,7 +18,7 @@ function renderStars(rate) {
 }
 
 export async function openDessertModal(id) {
-  // prevent duplicate modal
+
   if (document.querySelector('.modal-backdrop')) {
     return;
   }

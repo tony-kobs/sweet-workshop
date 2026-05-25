@@ -50,7 +50,7 @@ export class CustomSelect {
       },
     });
 
-    // Прибираємо дефолтну стрілку і вставляємо свій SVG
+    
     const inner = this.container.querySelector('.choices__inner');
     inner.insertAdjacentHTML(
       'beforeend',

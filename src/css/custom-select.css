@@ -1,10 +1,9 @@
-/* ===== Контейнер ===== */
+
 .choices[data-type*='select-one']::after,
 .choices[data-type*='select-one'].is-open::after {
   display: none;
 }
 
-/* ===== Основний бокс ===== */
 .choices__inner {
   display: flex;
   align-items: center;
@@ -42,7 +41,6 @@
   opacity: 1;
 }
 
-/* ===== Іконка стрілки ===== */
 .sel-chevron {
   display: flex;
   align-items: center;
@@ -58,7 +56,6 @@
   transform: rotate(180deg);
 }
 
-/* ===== Dropdown ===== */
 .choices__list--dropdown {
   border: 2px solid var(--color-neutral-darker) !important;
   border-radius: 6px;
@@ -101,7 +98,6 @@
   padding-bottom: 2px;
 }
 
-/* ===== Скролбар ===== */
 .choices__list--dropdown {
   border: 2px solid var(--color-neutral-darker) !important;
   border-radius: 6px;
@@ -136,7 +132,6 @@
   max-height: 10px !important;
 }
 
-/* Внутрішній список — БЕЗ overflow і max-height */
 .choices__list--dropdown .choices__list {
   display: flex;
   flex-direction: column;

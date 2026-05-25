@@ -124,7 +124,7 @@ export function createFeedbackSlider(selector, customEvents = {}) {
     },
     breakpoints: {
       320: { slidesPerView: 1, spaceBetween: DEFAULT_SPACE },
-      ...DEFAULT_BREAKPOINTS,
+      768: { slidesPerView: 3, spaceBetween: DEFAULT_SPACE },
     },
     on: createSharedEvents(customEvents),
   });

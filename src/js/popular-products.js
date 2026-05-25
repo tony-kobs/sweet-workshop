@@ -1,4 +1,4 @@
-// popular.js
+
 import { fetchDesserts } from './services/api/api.js';
 import iconsUrl from '../img/icons.svg';
 import { createPopularSlider, destroySwiper } from './utils/common-swiper.js';

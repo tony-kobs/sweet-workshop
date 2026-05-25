@@ -1,8 +1,5 @@
-// import Swiper JS
 import Swiper from 'swiper';
-// import Swiper styles
 import 'swiper/css';
-// import Section JS
 import './js/header.js'
 import './js/popular-products.js'
 

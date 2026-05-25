@@ -1,4 +1,4 @@
-// about.js
+
 import { createAboutSlider, destroySwiper } from './utils/common-swiper.js';
 
 const DESKTOP_BREAKPOINT = 769;
