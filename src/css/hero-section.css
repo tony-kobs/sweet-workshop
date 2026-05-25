@@ -4,7 +4,6 @@
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
-  min-width: 320px;
   padding: 155px 20px;
   margin: 0 auto;
 }
@@ -109,7 +108,7 @@
   }
 
   .hero-content {
-    min-width: 768px;
+    max-width: 768px;
   }
 
   .hero-title {

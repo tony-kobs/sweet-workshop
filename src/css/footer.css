@@ -29,7 +29,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 309px;
+  max-width: 309px;
   height: 132px;
   text-decoration: none;
   transition: opacity 0.3s ease;
@@ -41,6 +41,8 @@
 
 .logo-icon {
   fill: var(--color-scheme-1-text);
+  width: 100%;
+  height: auto;
 }
 
 .footer-nav {
