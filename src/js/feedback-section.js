@@ -4,12 +4,13 @@ import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination'; // Додайте цей рядок під базовим CSS Swiper
 import { fetchFeedbacks } from './services/api/api.js';
+import { getUnifiedPaginationConfig } from './utils/common-swiper.js';
 
 import { generateStarsTemplate } from './utils/stars.js';
 import { showLoader, hideLoader } from './utils/loader.js';
 import { showErrorToast } from './utils/toast.js';
 
-// КОНСТАНТИ ДЛЯ ЗРУЧНОГО КЕРУВАННЯ ДАНИМИ З БЕКЕНДУ
+// КОНСТАНТИ ДЛЯ ЗРУЧНОГО КЕРУВАННЯ ДАНИМИ З БЕКЕНДУs
 const FEEDBACKS_LIMIT = 10; // Кількість відгуків (карток)
 const FEEDBACKS_PAGE = 1; // Поточна сторінка запиту
 
