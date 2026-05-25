@@ -1,14 +1,13 @@
+// about.js
 import { createAboutSlider, destroySwiper } from './utils/common-swiper.js';
+
+const DESKTOP_BREAKPOINT = 769;
 
 const debounce = (func, delay = 200) => {
   let timeoutId;
-
   return (...args) => {
     clearTimeout(timeoutId);
-
-    timeoutId = setTimeout(() => {
-      func(...args);
-    }, delay);
+    timeoutId = setTimeout(() => func(...args), delay);
   };
 };
 
@@ -25,21 +24,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const removeSwiper = () => {
     destroySwiper(aboutSwiperInstance);
-
     aboutSwiperInstance = null;
   };
 
   const manageAboutSwiper = () => {
-    const isMobile = window.innerWidth <= 768;
+    const isDesktop = window.innerWidth >= DESKTOP_BREAKPOINT;
 
-    if (isMobile) {
-      removeSwiper();
-    } else if (!aboutSwiperInstance) {
+    if (isDesktop && !aboutSwiperInstance) {
       initSwiper();
+    } else if (!isDesktop && aboutSwiperInstance) {
+      removeSwiper();
     }
   };
 
   manageAboutSwiper();
-
   window.addEventListener('resize', debounce(manageAboutSwiper, 150));
 });
