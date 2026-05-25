@@ -1,8 +1,9 @@
 .header {
   width: 100%;
   background: var(--color-scheme-1-background);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
   z-index: 1100;
 }
 
@@ -106,7 +107,7 @@
   bottom: 0;
   width: 100%;
   height: 2px;
-  background-color: #000000;
+  background-color: var(--color-neutral-darkest);
   transform: scaleX(0);
   transition:
     transform 0.2s ease,
@@ -119,10 +120,11 @@
 }
 
 .nav-menu-overlay .nav-link:active {
-  color: #f07f7f;
+  color: var(--color-wewak);
 }
+
 .nav-menu-overlay .nav-link:active::after {
-  background-color: #f07f7f;
+  background-color: var(--color-wewak);
 }
 
 .nav-menu-overlay .btn-action {
@@ -194,7 +196,7 @@
     bottom: 0;
     width: 100%;
     height: 2px;
-    background-color: #000000;
+    background-color: var(--color-neutral-darkest);
     transform: scaleX(0);
     transition:
       transform 0.2s ease,
@@ -207,10 +209,11 @@
   }
 
   .nav-link:active {
-    color: #f07f7f;
+    color: var(--color-wewak);
   }
+
   .nav-link:active::after {
-    background-color: #f07f7f;
+    background-color: var(--color-wewak);
   }
 
   .btn-action {

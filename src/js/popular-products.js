@@ -30,7 +30,7 @@ async function renderPopularProducts() {
         ({ _id, image, category, name, description, price }) => `
         <div class="swiper-slide">
           <article class="dessert-item" data-id="${_id}">
-            <img
+            <img loading="lazy"
               src="${image}"
               alt="${name}"
               class="dessert-image"
@@ -68,5 +68,20 @@ async function renderPopularProducts() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderPopularProducts();
+  const section = document.querySelector('.popular-products') || document.querySelector('#popular-products');
+  if (!section) {
+    renderPopularProducts();
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        renderPopularProducts();
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '300px' });
+
+  observer.observe(section);
 });

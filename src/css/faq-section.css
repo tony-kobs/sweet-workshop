@@ -15,7 +15,7 @@
 
 .ac {
   border: none !important;
-  border-top: 1.5px solid #080c0c !important;
+  border-top: 1.5px solid var(--color-neutral-darkest) !important;
   transition: all 0.2s ease;
   overflow: hidden;
   border-radius: 0 !important;
@@ -25,7 +25,7 @@
   display: none !important;
 }
 .ac:last-child {
-  border-bottom: 1.5px solid #080c0c !important;
+  border-bottom: 1.5px solid var(--color-neutral-darkest) !important;
 }
 
 .ac-trigger {
@@ -40,13 +40,13 @@
   font-weight: 600 !important;
   font-size: 16px !important;
   line-height: 1.5 !important;
-  color: #080c0c !important;
+  color: var(--color-neutral-darkest) !important;
 }
 
 .ac-trigger:hover,
 .ac-trigger:focus,
 .ac.is-active .ac-trigger {
-  color: #080c0c !important;
+  color: var(--color-neutral-darkest) !important;
 }
 
 .ac-trigger {
@@ -87,8 +87,8 @@
 }
 
 .faq-icon use {
-  fill: #080c0c;
-  stroke: #080c0c;
+  fill: var(--color-neutral-darkest);
+  stroke: var(--color-neutral-darkest);
 }
 
 @media only screen and (min-width: 768px) {
