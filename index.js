@@ -112,7 +112,9 @@ import{r as e}from"./assets/rolldown-runtime-QTnfLwEv.js";import{a as t,c as n,i
         </button>
 
         <div class="modal-content">
-          Loading...
+          <div class="modal-loader-wrapper">
+            <span class="loader"></span>
+            </div>
         </div>
 
       </div>
