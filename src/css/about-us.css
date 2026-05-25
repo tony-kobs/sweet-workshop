@@ -138,7 +138,6 @@
 
 .about-us-pagination .swiper-pagination-bullet-active {
   background-color: var(--color-neutral-darkest);
-  transform: scale(1.4);
   opacity: 1;
 }
 
