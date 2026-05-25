@@ -3,12 +3,53 @@ import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import iconsUrl from '../img/icons.svg';
-import {
-  getUnifiedPaginationConfig,
-  updateDynamicBullets,
-} from './utils/common-swiper.js';
 
+const VISIBLE_BULLETS = 5;
 const popularList = document.getElementById('popular-products-list');
+
+function updateBullets(swiper) {
+  const bullets = [
+    ...swiper.pagination.el.querySelectorAll('.swiper-pagination-bullet'),
+  ];
+  const active = swiper.realIndex;
+  const half = Math.floor(VISIBLE_BULLETS / 2);
+
+  let start = active - half;
+  let end = active + half;
+
+  if (start < 0) {
+    end += Math.abs(start);
+    start = 0;
+  }
+  if (end >= bullets.length) {
+    start = Math.max(0, start - (end - bullets.length + 1));
+    end = bullets.length - 1;
+  }
+
+  bullets.forEach((bullet, i) => {
+    if (i < start || i > end) {
+      bullet.style.display = 'none';
+      return;
+    }
+
+    bullet.style.display = 'inline-block';
+
+    const dist = Math.abs(i - active);
+    if (dist === 0) {
+      bullet.style.width = '8px';
+      bullet.style.height = '8px';
+      bullet.style.opacity = '1';
+    } else if (dist === 1) {
+      bullet.style.width = '8px';
+      bullet.style.height = '8px';
+      bullet.style.opacity = '0.4';
+    } else {
+      bullet.style.width = '6px';
+      bullet.style.height = '6px';
+      bullet.style.opacity = '0.2';
+    }
+  });
+}
 
 function initPopularSlider() {
   const swiperContainer = document.querySelector('.popular-swiper');
@@ -20,17 +61,20 @@ function initPopularSlider() {
     observer: true,
     observeParents: true,
     resizeObserver: true,
+
     slidesPerView: 1,
     spaceBetween: 20,
     grabCursor: true,
-    loop: true,
 
     navigation: {
       nextEl: '.popular-nav-btn-next',
       prevEl: '.popular-nav-btn-prev',
     },
 
-    pagination: getUnifiedPaginationConfig('.popular-pagination'),
+    pagination: {
+      el: '.popular-pagination',
+      clickable: true,
+    },
 
     breakpoints: {
       768: {
@@ -45,10 +89,10 @@ function initPopularSlider() {
 
     on: {
       init(swiper) {
-        updateDynamicBullets(swiper, 6);
+        updateBullets(swiper);
       },
       slideChange(swiper) {
-        updateDynamicBullets(swiper, 6);
+        updateBullets(swiper);
       },
     },
   });
@@ -67,7 +111,6 @@ async function renderPopularProducts() {
     }
 
     const markup = desserts
-      .slice(0, 6)
       .map(
         ({ _id, image, category, name, description, price }) => `
         <div class="swiper-slide">
