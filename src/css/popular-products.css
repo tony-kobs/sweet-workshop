@@ -16,7 +16,7 @@
 
 /* Swiper overflow щоб контролси були видимі */
 .popular-swiper {
-  overflow: visible;
+  overflow: hidden;
 }
 
 .popular-swiper .swiper-slide {
