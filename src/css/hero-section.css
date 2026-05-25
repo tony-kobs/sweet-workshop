@@ -5,7 +5,7 @@
   background-repeat: no-repeat;
   width: 100%;
   min-width: 320px;
-  padding: 108.5px 32px;
+  padding: 155px 20px;
   margin: 0 auto;
 }
 @media screen and (min-resolution: 2dppx) {
@@ -19,7 +19,6 @@
   align-items: center;
   gap: 32px;
   padding: 0;
-  min-width: 320px;
   max-width: 335px;
   margin: 0 auto;
 }
@@ -27,7 +26,6 @@
   display: flex;
   gap: 24px;
   flex-direction: column;
-  text-align: center;
   align-items: center;
   justify-content: center;
 }
@@ -50,7 +48,7 @@
 }
 .hero-link-button {
   font-family: var(--font-family);
-  border: 1px solid var(--color-wewak);
+  border: 2px solid var(--color-wewak);
   border-radius: 100px;
   padding: 10px 24px;
   width: 100%;
@@ -58,33 +56,54 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
+
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--color-neutral-darkest);
 }
 
-.hero-link-button:hover {
-  border: 2px solid var(--color-neutral-darkest);
-  border-radius: 100px;
-  background: var(--color-wewak);
-}
-.hero-link-button:active,
+.hero-link-button:hover,
 .hero-link-button:focus {
+  border: 2px solid var(--color-neutral-darkest);
+  background: var(--color-scheme-1-background);
+}
+.hero-link-button:active {
   border: 2px solid var(--color-neutral-darkest);
   background: var(--color-wewak-dark);
 }
 @media screen and (min-width: 768px) {
   .hero-section {
-    padding-top: 311.5px;
-    padding-bottom: 311.5px;
+    background-image: url('/img/hero/hero-tablet.jpg');
+    padding: 325px 32px;
   }
-  .hero-content {
-    max-width: 560px;
+}
+@media screen and (min-resolution: 2dppx) {
+  .hero-section {
+    background-image: url('/img/hero/hero-tablet-2x.jpg');
   }
+}
+.hero-content {
+  max-width: 704px;
+}
+.hero-link-button {
+  max-width: fit-content;
 }
 @media screen and (min-width: 1440px) {
   .hero-section {
+    background-image: url('/img/hero/hero-dekstop.jpg');
     width: 1440px;
-    padding: 259px 64px;
+    padding: 306px 0px;
   }
-  .hero-title {
-    font-size: 56px;
+}
+@media screen and (min-resolution: 2dppx) {
+  .hero-section {
+    background-image: url('/img/hero/hero-deskstop-2x.jpg');
   }
+}
+.hero-content {
+  min-width: 768px;
+}
+.hero-title {
+  font-size: 56px;
 }
