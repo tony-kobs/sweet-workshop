@@ -8,11 +8,13 @@
   padding: 155px 20px;
   margin: 0 auto;
 }
+
 @media screen and (min-resolution: 2dppx) {
   .hero-section {
     background-image: url('/img/hero/hero-mobile-2x.jpg');
   }
 }
+
 .hero-content {
   display: flex;
   flex-direction: column;
@@ -22,6 +24,7 @@
   max-width: 335px;
   margin: 0 auto;
 }
+
 .hero-box {
   display: flex;
   gap: 24px;
@@ -29,6 +32,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .hero-title {
   font-family: var(--second-family);
   font-weight: 700;
@@ -38,6 +42,7 @@
   text-align: center;
   color: var(--color-white);
 }
+
 .hero-text {
   font-family: var(--font-family);
   font-weight: 400;
@@ -46,6 +51,7 @@
   text-align: center;
   color: var(--color-white);
 }
+
 .hero-link-button {
   font-family: var(--font-family);
   border: 2px solid var(--color-wewak);
@@ -68,42 +74,51 @@
   border: 2px solid var(--color-neutral-darkest);
   background: var(--color-scheme-1-background);
 }
+
 .hero-link-button:active {
   border: 2px solid var(--color-neutral-darkest);
   background: var(--color-wewak-dark);
 }
+
 @media screen and (min-width: 768px) {
   .hero-section {
     background-image: url('/img/hero/hero-tablet.jpg');
     padding: 325px 32px;
   }
+
+  .hero-content {
+    max-width: 704px;
+  }
+
+  .hero-link-button {
+    max-width: fit-content;
+  }
 }
-@media screen and (min-resolution: 2dppx) {
+
+@media screen and (min-width: 768px) and (min-resolution: 2dppx) {
   .hero-section {
     background-image: url('/img/hero/hero-tablet-2x.jpg');
   }
 }
-.hero-content {
-  max-width: 704px;
-}
-.hero-link-button {
-  max-width: fit-content;
-}
+
 @media screen and (min-width: 1440px) {
   .hero-section {
     background-image: url('/img/hero/hero-desktop.jpg');
     width: 1440px;
-    padding: 306px 0px;
+    padding: 306px 0;
+  }
+
+  .hero-content {
+    min-width: 768px;
+  }
+
+  .hero-title {
+    font-size: 56px;
   }
 }
-@media screen and (min-resolution: 2dppx) {
+
+@media screen and (min-width: 1440px) and (min-resolution: 2dppx) {
   .hero-section {
     background-image: url('/img/hero/hero-desktop-2x.jpg');
   }
-}
-.hero-content {
-  min-width: 768px;
-}
-.hero-title {
-  font-size: 56px;
 }
