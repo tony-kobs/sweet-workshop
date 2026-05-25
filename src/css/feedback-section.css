@@ -155,11 +155,7 @@
    ==========================================================================
 */
 
-/* Головний контейнер слайдера повністю обнуляє маржини для дочірніх крапок */
-.feedback-slider-container {
-  --swiper-pagination-bullet-horizontal-margin: 0px;
-  --swiper-pagination-bullet-vertical-margin: 0px;
-}
+
 
 /* ------------------------------------------------------------- */
 /* ---START----БЛОК ПАГІНАЦІЇ (МОБІЛЬНА ВЕРСІЯ - ДО 767px)------ */
@@ -191,33 +187,14 @@
   align-items: center; /* Центрує обидва рядки крапок по вертикалі відносно стрілок */
   justify-content: flex-start; /* Вирівнювання крапок строго по лівому краю на мобілці */
   gap: var(--bullet-gap); /* Нативний проміжний крок між елементами */
+  width: auto; /* Запобігає розтягуванню на 100% і дозволяє кнопкам бути поруч */
 
   max-height: 28px; /* Обмеження висоти контейнера строго за ТЗ */
   margin: 0;
   padding: 0;
 }
 
-/* Базовий вигляд кожної сірої крапки */
-.feedback-pagination .swiper-pagination-bullet {
-  flex-shrink: 0; /* Повністю захищає крапки від будь-якої деформації чи стискання */
-  display: block;
-  width: var(--bullet-size); /* Прив'язка до змінної розміру */
-  height: var(--bullet-size); /* Прив'язка до змінної розміру */
-  border-radius: 50%;
-  background-color: var(--color-neutral-light);
-  opacity: 0.5;
-  cursor: pointer;
-  transform: none;
-  transition:
-    opacity 0.3s ease,
-    background-color 0.3s ease;
-}
 
-/* Активна чорна крапка на мобілці */
-.feedback-pagination .swiper-pagination-bullet-active {
-  opacity: 1;
-  background-color: var(--color-scheme-1-text);
-}
 
 /* --------------------------------------------------------- */
 /* ---END--- БЛОК ПАГІНАЦІЇ (МОБІЛЬНА ВЕРСІЯ - ДО 767px)-----*/
@@ -226,6 +203,7 @@
 .feedback-arrows-group {
   display: flex;
   gap: 16px;
+  margin-left: auto; /* Примусово відштовхує кнопки до правого краю */
 }
 
 /* 
@@ -361,15 +339,7 @@
     max-height: 28px; /* Зберігаємо обмеження висоти контейнера строго за ТЗ */
   }
 
-  /* Статичні крапки однакового розміру 8px на 8px без змін */
-  .feedback-pagination .swiper-pagination-bullet {
-    opacity: 0.5;
-  }
 
-  /* Статична активна чорна крапка на планшеті та десктопі строго по центру */
-  .feedback-pagination .swiper-pagination-bullet-active {
-    opacity: 1;
-  }
 
   /* --------------------------------------------------------- */
   /* ---END--- БЛОК ПАГІНАЦІЇ (TABLET STYLES - з 768px)--------*/

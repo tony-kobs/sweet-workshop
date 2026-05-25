@@ -1,0 +1,28 @@
+.swiper-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  margin: 0 !important;
+  border-radius: 50%;
+  background-color: var(--color-neutral-light, #b4b6b6);
+  opacity: 1;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+  cursor: pointer;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--color-neutral-darkest, #080c0c);
+  opacity: 1;
+}
+
+.swiper-pagination .swiper-pagination-bullet:hover {
+  background-color: var(--color-scheme-1-hover, #c38383);
+}

@@ -85,7 +85,7 @@ export async function openDessertModal(id) {
     const { data } = await fetchDessertById(id);
 
     modalContent.innerHTML = `
-  <img
+  <img loading="lazy"
     src="${data.image}"
     alt="${data.name}"
     class="modal-image"
