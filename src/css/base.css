@@ -68,6 +68,11 @@ body {
   background: var(--color-scheme-1-background);
 }
 
+body.no-scroll {
+  height: 100vw;
+  overflow: hidden;
+}
+
 h2 {
   font-family: var(--second-family);
   font-weight: 700;

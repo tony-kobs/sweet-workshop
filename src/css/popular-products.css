@@ -1,5 +1,4 @@
 .popular-products {
-  padding: 40px 0;
   background-color: #f5fdfd;
 }
 
@@ -15,6 +14,17 @@
   justify-content: flex-start;
 }
 
+/* Swiper overflow щоб контролси були видимі */
+.popular-swiper {
+  overflow: visible;
+}
+
+.popular-swiper .swiper-slide {
+  height: auto;
+  display: flex;
+}
+
+/* Картка */
 .popular-swiper .dessert-item {
   background: transparent;
   border: 1px solid #080c0c;
@@ -23,7 +33,9 @@
   padding: 16px;
   display: flex;
   flex-direction: column;
+  width: 100%;
   height: 100%;
+  box-sizing: border-box;
 }
 
 .popular-swiper .dessert-image {
@@ -33,6 +45,18 @@
   object-fit: cover;
 }
 
+.popular-swiper .dessert-content-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.popular-swiper .dessert-header-content {
+  flex-grow: 1;
+}
+
+/* Controls */
 .popular-controls-wrapper {
   display: flex;
   justify-content: space-between;
@@ -41,9 +65,11 @@
   position: relative;
 }
 
+/* Пагінація */
 .popular-pagination.swiper-pagination {
   position: static;
   display: flex;
+  align-items: center;
   gap: 8px;
   width: auto;
 }
@@ -55,13 +81,19 @@
   background-color: #080c0c;
   opacity: 0.2;
   margin: 0;
-  transition: opacity 0.3s ease;
+  flex-shrink: 0;
+  transition:
+    width 0.2s ease,
+    height 0.2s ease,
+    opacity 0.2s ease;
+  cursor: pointer;
 }
 
 .popular-pagination .swiper-pagination-bullet-active {
   opacity: 1;
 }
 
+/* Навігація */
 .popular-nav-buttons {
   display: flex;
   gap: 16px;
@@ -102,28 +134,4 @@
   opacity: 0.3;
   cursor: not-allowed;
   pointer-events: none;
-}
-
-.popular-swiper .swiper-slide {
-  height: auto;
-  display: flex;
-}
-
-.popular-swiper .dessert-item {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-.popular-swiper .dessert-content-wrapper {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.popular-swiper .dessert-header-content {
-  flex-grow: 1;
 }
