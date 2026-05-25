@@ -91,14 +91,14 @@
 }
 @media screen and (min-width: 1440px) {
   .hero-section {
-    background-image: url('/img/hero/hero-dekstop.jpg');
+    background-image: url('/img/hero/hero-desktop.jpg');
     width: 1440px;
     padding: 306px 0px;
   }
 }
 @media screen and (min-resolution: 2dppx) {
   .hero-section {
-    background-image: url('/img/hero/hero-deskstop-2x.jpg');
+    background-image: url('/img/hero/hero-desktop-2x.jpg');
   }
 }
 .hero-content {
