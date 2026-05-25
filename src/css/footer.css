@@ -31,7 +31,7 @@
   justify-content: center;
   flex-direction: column;
   max-width: 309px;
-  height: 132px;
+  height: auto;
   text-decoration: none;
   transition: opacity 0.3s ease;
 }
@@ -42,7 +42,7 @@
 
 .logo-icon {
   fill: var(--color-scheme-1-text);
-  width: 100%;
+  width: min(82.4vw, 309px);
   height: auto;
 }
 
@@ -179,6 +179,7 @@
     flex-direction: row;
     gap: 32px;
   }
+
 
   .footer-copyright {
     max-width: 704px;
