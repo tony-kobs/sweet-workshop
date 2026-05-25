@@ -1,57 +1,16 @@
 import { fetchDesserts } from './services/api/api.js';
-import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
-import 'swiper/css';
+
 import iconsUrl from '../img/icons.svg';
-import {
-  getUnifiedPaginationConfig,
-  updateDynamicBullets,
-} from './utils/common-swiper.js';
+import { createPopularSlider } from './utils/common-swiper.js';
 
 const popularList = document.getElementById('popular-products-list');
 
 function initPopularSlider() {
   const swiperContainer = document.querySelector('.popular-swiper');
+
   if (!swiperContainer) return;
 
-  const swiper = new Swiper(swiperContainer, {
-    modules: [Navigation, Pagination],
-
-    observer: true,
-    observeParents: true,
-    resizeObserver: true,
-    slidesPerView: 1,
-    spaceBetween: 20,
-    grabCursor: true,
-    loop: true,
-
-    navigation: {
-      nextEl: '.popular-nav-btn-next',
-      prevEl: '.popular-nav-btn-prev',
-    },
-
-    pagination: getUnifiedPaginationConfig('.popular-pagination'),
-
-    breakpoints: {
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 24,
-      },
-      1440: {
-        slidesPerView: 3,
-        spaceBetween: 24,
-      },
-    },
-
-    on: {
-      init(swiper) {
-        updateDynamicBullets(swiper, 6);
-      },
-      slideChange(swiper) {
-        updateDynamicBullets(swiper, 6);
-      },
-    },
-  });
+  createPopularSlider(swiperContainer);
 }
 
 async function renderPopularProducts() {
@@ -67,7 +26,6 @@ async function renderPopularProducts() {
     }
 
     const markup = desserts
-      .slice(0, 6)
       .map(
         ({ _id, image, category, name, description, price }) => `
         <div class="swiper-slide">
