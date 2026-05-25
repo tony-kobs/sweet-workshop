@@ -9,11 +9,7 @@ function renderStars(rate) {
     .fill('')
     .map(
       (_, i) => `
-        <span class="${
-          i < rate
-            ? 'star filled'
-            : 'star'
-        }">
+        <span class="${i < rate ? 'star filled' : 'star'}">
           ★
         </span>
       `
@@ -43,7 +39,9 @@ export async function openDessertModal(id) {
         </button>
 
         <div class="modal-content">
-          Loading...
+          <div class="modal-loader-wrapper">
+            <span class="loader"></span>
+            </div>
         </div>
 
       </div>
@@ -86,7 +84,7 @@ export async function openDessertModal(id) {
   try {
     const { data } = await fetchDessertById(id);
 
-modalContent.innerHTML = `
+    modalContent.innerHTML = `
   <img
     src="${data.image}"
     alt="${data.name}"
