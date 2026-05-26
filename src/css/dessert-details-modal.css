@@ -1,7 +1,7 @@
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 1600;
+  z-index: 99;
 
   display: flex;
   justify-content: center;
@@ -21,15 +21,12 @@
 
   padding: 64px 20px;
 
-  background: var(--color-scheme-2-background);
+  background: var(--color-scheme-1-background);
   border-radius: 20px;
 
   display: flex;
   flex-direction: column;
-
   max-height: calc(100dvh - 64px);
-
-  overflow: hidden;
 }
 
 .modal-close-btn {
@@ -43,6 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
 
   border: none;
   background: transparent;
@@ -53,11 +51,7 @@
 
   cursor: pointer;
 
-  transition: opacity 0.2s ease;
-}
-
-.modal-close-btn:hover {
-  opacity: 0.7;
+  transition: var(--transition);
 }
 
 .modal-content {
@@ -71,7 +65,7 @@
   min-height: 0;
 
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: visible;
   cursor: grab;
 }
 
@@ -157,7 +151,7 @@
   line-height: 1.5;
   color: var(--color-neutral-darkest);
 
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition);
 }
 
 .order-btn:hover,

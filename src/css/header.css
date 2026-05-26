@@ -4,7 +4,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1100;
+  z-index: 98;
 }
 
 .header-container {
@@ -39,7 +39,7 @@
   width: 100vw;
   height: 100vh;
   background: var(--color-scheme-1-background);
-  z-index: 1500;
+  z-index: 99;
 
   display: none;
   flex-direction: column;
@@ -50,9 +50,7 @@
   left: 0;
   opacity: 0;
   visibility: hidden;
-  transition:
-    opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--transition);
 }
 
 .nav-menu-overlay.open {
@@ -93,7 +91,7 @@
   line-height: 1.5;
   color: var(--color-scheme-1-text);
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--transition);
   position: relative;
   padding-bottom: 2px;
 }
@@ -107,9 +105,7 @@
   height: 2px;
   background-color: var(--color-neutral-darkest);
   transform: scaleX(0);
-  transition:
-    transform 0.2s ease,
-    background-color 0.2s ease;
+  transition:var(--transition);
 }
 
 .nav-menu-overlay .nav-link:hover::after,
@@ -125,7 +121,7 @@
   background-color: var(--color-wewak);
 }
 
-.nav-menu-overlay .btn-action {
+.nav-menu-overlay .link-action {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,16 +135,16 @@
   padding: 8px 20px;
   margin: 46px auto 0 auto;
   cursor: pointer;
-  transition: all 0.25s ease-in-out;
+  transition: var(--transition);
 }
 
-.nav-menu-overlay .btn-action:hover,
-.nav-menu-overlay .btn-action:focus {
+.nav-menu-overlay .link-action:hover,
+.nav-menu-overlay .link-action:focus {
   border: 2px solid var(--color-neutral-darkest);
   background-color: transparent;
 }
 
-.nav-menu-overlay .btn-action:active {
+.nav-menu-overlay .link-action:active {
   border: 2px solid var(--color-neutral-darkest);
   background-color: var(--color-wewak-light);
 }
@@ -205,9 +201,7 @@
     height: 2px;
     background-color: var(--color-neutral-darkest);
     transform: scaleX(0);
-    transition:
-      transform 0.2s ease,
-      background-color 0.2s ease;
+    transition: var(--transition);
   }
 
   .nav-link:hover::after,
@@ -223,7 +217,7 @@
     background-color: var(--color-wewak);
   }
 
-  .btn-action {
+  .link-action {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -235,16 +229,16 @@
     border-radius: 100px;
     padding: 8px 20px;
     cursor: pointer;
-    transition: all 0.25s ease-in-out;
+    transition: var(--transition);
   }
 
-  .btn-action:hover,
-  .btn-action:focus {
+  .link-action:hover,
+  .link-action:focus {
     border: 2px solid var(--color-neutral-darkest);
     background-color: transparent;
   }
 
-  .btn-action:active {
+  .link-action:active {
     border: 2px solid var(--color-neutral-darkest);
     background-color: var(--color-wewak-light);
   }

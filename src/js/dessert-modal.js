@@ -33,7 +33,7 @@ export async function openDessertModal(id) {
           class="modal-close-btn"
           aria-label="Close modal"
         >
-          <svg width="24" height="24">
+          <svg class="close-icon" width="24" height="24">
             <use href="${iconsUrl}#icon-close"></use>
           </svg>
         </button>

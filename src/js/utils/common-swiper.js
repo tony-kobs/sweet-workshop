@@ -1,9 +1,6 @@
 // utils/common-swiper.js
-import Swiper from 'swiper';
-import { Navigation, Pagination, Keyboard } from 'swiper/modules';
-
-import 'swiper/css';
-import 'swiper/css/pagination';
+import Swiper from 'swiper/bundle';
+import 'swiper/css/bundle';
 
 const VISIBLE_BULLETS = 6;
 const DEFAULT_SPACE = 24;
@@ -14,63 +11,18 @@ const DEFAULT_BREAKPOINTS = {
   1440: { slidesPerView: 3, spaceBetween: DEFAULT_SPACE },
 };
 
-function updateBullets(swiper) {
-  if (!swiper?.pagination?.el) return;
-
-  const bullets = [
-    ...swiper.pagination.el.querySelectorAll('.swiper-pagination-bullet'),
-  ];
-
-  const active = swiper.realIndex;
-  const half = Math.floor(VISIBLE_BULLETS / 2);
-
-  let start = active - half;
-  let end = active + half;
-
-  if (start < 0) {
-    end += Math.abs(start);
-    start = 0;
-  }
-
-  if (end >= bullets.length) {
-    start = Math.max(0, start - (end - bullets.length + 1));
-    end = bullets.length - 1;
-  }
-
-  bullets.forEach((bullet, index) => {
-    const dist = Math.abs(index - active);
-
-    bullet.classList.remove('bullet-active', 'bullet-near', 'bullet-far');
-
-    if (index < start || index > end) {
-      bullet.style.display = 'none';
-      return;
-    }
-
-    bullet.style.display = 'inline-block';
-
-    if (dist === 0) bullet.classList.add('bullet-active');
-    else if (dist === 1) bullet.classList.add('bullet-near');
-    else bullet.classList.add('bullet-far');
-  });
-}
-
 function createSharedEvents(customEvents = {}) {
   return {
     init(swiper) {
-      updateBullets(swiper);
       customEvents?.init?.(swiper);
     },
     slideChange(swiper) {
-      updateBullets(swiper);
       customEvents?.slideChange?.(swiper);
     },
     resize(swiper) {
-      updateBullets(swiper);
       customEvents?.resize?.(swiper);
     },
     breakpoint(swiper) {
-      updateBullets(swiper);
       customEvents?.breakpoint?.(swiper);
     },
   };
@@ -78,7 +30,6 @@ function createSharedEvents(customEvents = {}) {
 
 function createBaseSwiper(selector, options = {}) {
   return new Swiper(selector, {
-    modules: [Navigation, Pagination, Keyboard],
     slidesPerView: 1,
     spaceBetween: 20,
     grabCursor: true,
@@ -100,9 +51,10 @@ export function createPopularSlider(selector) {
     pagination: {
       el: '.popular-pagination',
       clickable: true,
+      dynamicBullets: true,
+      dynamicMainBullets: 1,
     },
     breakpoints: DEFAULT_BREAKPOINTS,
-    on: createSharedEvents(),
   });
 }
 
@@ -121,6 +73,8 @@ export function createFeedbackSlider(selector, customEvents = {}) {
     pagination: {
       el: '.feedback-pagination',
       clickable: true,
+      dynamicBullets: true,
+      dynamicMainBullets: 1,
     },
     breakpoints: {
       320: { slidesPerView: 1, spaceBetween: DEFAULT_SPACE },
