@@ -9,8 +9,8 @@
 .swiper-pagination-custom,
 .swiper-horizontal>.swiper-pagination-bullets,
 .swiper-pagination-bullets.swiper-pagination-horizontal {
-  bottom: 0 !important;
-  top: 0 !important; 
+  bottom: var(--swiper-pagination-bottom, 0px) !important;
+  top: var(--swiper-pagination-bottom, 0px);
   left: 0;
   width: 100%;
 }
