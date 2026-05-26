@@ -87,7 +87,7 @@ max-height: calc(100dvh - 64px);
   padding: 8px 12px;
   height: 40px;
   background: transparent;
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition);
 
 }
 .modal-order-input::placeholder {
@@ -110,7 +110,7 @@ max-height: calc(100dvh - 64px);
   background: var(--opacity-transparent);
   resize: vertical;
   overflow-x: hidden;
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition);
 
 }
 .modal-order-textarea::placeholder {
