@@ -32,3 +32,14 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+input,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
