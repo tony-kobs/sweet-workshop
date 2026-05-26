@@ -6,7 +6,7 @@ export function initFaqAccordion() {
   const accordionContainer = document.getElementById('faqAccordion');
 
   if (!accordionContainer) {
-    console.warn('FAQ акордеон: контейнер #faqAccordion не знайдено');
+    showInfoToast('FAQ акордеон: контейнер #faqAccordion не знайдено');
     return null;
   }
 
@@ -37,8 +37,6 @@ export function initFaqAccordion() {
     panelClass: 'ac-panel',
     activeClass: 'is-active',
   });
-
-  console.log('✅ FAQ акордеон успішно ініціалізовано');
   return accordion;
 }
 

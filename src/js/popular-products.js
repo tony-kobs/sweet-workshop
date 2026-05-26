@@ -1,4 +1,3 @@
-
 import { fetchDesserts } from './services/api/api.js';
 import iconsUrl from '../img/icons.svg';
 import { createPopularSlider, destroySwiper } from './utils/common-swiper.js';
@@ -75,7 +74,7 @@ async function renderPopularProducts() {
     const desserts = parseDesserts(response.data);
 
     if (desserts.length < 3) {
-      console.warn('Отримано менше 3-х популярних товарів');
+      showInfoToast('Отримано менше 3-х популярних товарів');
       return;
     }
 
@@ -83,7 +82,7 @@ async function renderPopularProducts() {
 
     requestAnimationFrame(initPopularSlider);
   } catch (error) {
-    console.error('Помилка при завантаженні популярних товарів:', error);
+    showErrorToast('Помилка при завантаженні популярних товарів:', error);
   }
 }
 
