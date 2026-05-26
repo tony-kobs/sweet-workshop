@@ -106,7 +106,7 @@ import{r as e}from"./assets/rolldown-runtime-QTnfLwEv.js";import{a as t,i as n,n
           class="modal-close-btn"
           aria-label="Close modal"
         >
-          <svg width="24" height="24">
+          <svg class="close-icon" width="24" height="24">
             <use href="${p}#icon-close"></use>
           </svg>
         </button>
