@@ -12,9 +12,7 @@
   border-radius: 50%;
   background-color: var(--color-neutral-light, #b4b6b6);
   opacity: 1;
-  transition:
-    background-color 0.3s ease,
-    transform 0.3s ease;
+  transition: var(--transition);
   cursor: pointer;
 }
 

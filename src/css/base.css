@@ -57,6 +57,7 @@
   --red: #d50000;
   --font-family: 'Work Sans', sans-serif;
   --second-family: 'Comfortaa', sans-serif;
+  --transition: all 0.3s ease-in-out;
 }
 
 body {
@@ -87,4 +88,15 @@ h2 {
   h2 {
     font-size: 48px;
   }
+}
+
+.close-icon {
+  fill: var(--color-scheme-1-text);
+  stroke-width: 1px;
+  stroke: var(--color-scheme-1-text);
+  transition: var(--transition);
+}
+
+.close-icon:hover {
+  transform: rotate(180deg);
 }

@@ -16,7 +16,7 @@
 .ac {
   border: none !important;
   border-top: 1.5px solid var(--color-neutral-darkest) !important;
-  transition: all 0.2s ease;
+  transition: var(--transition);
   overflow: hidden;
   border-radius: 0 !important;
   margin: 0;
@@ -79,7 +79,7 @@
   width: 32px;
   height: 32px;
   flex-shrink: 0;
-  transition: transform 0.3s ease;
+  transition: var(--transition);
 }
 
 .ac.is-active .faq-icon {

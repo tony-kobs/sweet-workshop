@@ -14,7 +14,6 @@
   justify-content: flex-start;
 }
 
-
 .popular-swiper {
   overflow: hidden;
 }
@@ -23,7 +22,6 @@
   height: auto;
   display: flex;
 }
-
 
 .popular-swiper .dessert-item {
   background: transparent;
@@ -56,7 +54,6 @@
   flex-grow: 1;
 }
 
-
 .popular-controls-wrapper {
   display: flex;
   justify-content: space-between;
@@ -64,7 +61,6 @@
   margin-top: 24px;
   position: relative;
 }
-
 
 .popular-pagination.swiper-pagination {
   position: static;
@@ -74,9 +70,6 @@
   gap: 8px;
   width: auto;
 }
-
-
-
 
 .popular-nav-buttons {
   display: flex;
@@ -95,7 +88,7 @@
   background-color: transparent;
   color: var(--color-neutral-darkest);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .popular-nav-btn-prev svg,
