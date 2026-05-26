@@ -6,23 +6,22 @@
   align-items: center;
   z-index: 99;
   padding: 64px 20px;
+  /* padding-bottom: 0; */
   background: rgba(0, 0, 0, 0.25);
+
 }
 .modal-order {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 48px;
+    padding: 64px 20px;
+max-height: calc(100dvh - 64px);
   border-radius: 16px;
-  padding: 64px 20px;
   width: 100%;
   background-color: var(--color-scheme-1-background);
-  max-height: calc(100dvh - 64px);
-  overflow-y: auto;
-
-  overflow-x: hidden;
-  cursor: grab;
+  overflow: hidden;
 }
+
 .modal-order-close-btn {
   position: absolute;
   display: flex;
@@ -37,6 +36,23 @@
 .modal-order-close-svg {
   stroke: var(--color-scheme-1-text);
 }
+
+.modal-order-content{
+  display: flex;
+  flex-direction: column;
+    /* padding: 64px 20px; */
+
+  gap: 48px;
+  width: 100%;
+  max-height: calc(100dvh - 64px);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  cursor: grab;
+  flex: 1;
+  min-height: 0;
+}
+
 .modal-order-title {
   font-family: 'Comfortaa', sans-serif;
   font-weight: 700;
@@ -54,6 +70,7 @@
   align-items: center;
   align-self: center;
   width: 100%;
+
 }
 .modal-order-form-input-block {
   display: flex;
@@ -70,6 +87,8 @@
   padding: 8px 12px;
   height: 40px;
   background: transparent;
+  transition: var(--transition);
+
 }
 .modal-order-input::placeholder {
   font-family: 'Work Sans', sans-serif;
@@ -91,13 +110,22 @@
   background: var(--opacity-transparent);
   resize: vertical;
   overflow-x: hidden;
+  transition: var(--transition);
+
 }
 .modal-order-textarea::placeholder {
   font-family: 'Work Sans', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
-  color: var(--opacity-white-60);
+}
+.modal-order-input:focus,
+.modal-order-textarea:focus,
+.modal-order-input:hover,
+.modal-order-textarea:hover
+{
+  border: 2px solid var(--color-wewak);
+  background-color: var(--color-scheme-1-background);
 }
 .modal-order-label {
   align-self: baseline;
@@ -130,7 +158,7 @@
   border: 2px solid var(--color-scheme-1-border);
   background: var(--color-wewak-light);
 }
-.modal-order-submit-btn:disabled {
+.disabled {
   border: 2px solid var(--color-wewak);
   background: var(--color-wewak);
   opacity: 0.3;
@@ -141,6 +169,7 @@
 }
 
 .modal-order-input.invalidInput,
+.modal-order-textarea.invalidInput,
 .modal-order-input:invalid:not(:placeholder-shown),
 .modal-order-input:invalid:focus:not(:placeholder-shown),
 .modal-order-input:invalid:active:not(:placeholder-shown),

@@ -4,7 +4,7 @@
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
-  padding: 155px 20px;
+  padding: 227px 20px 155px 20px;
   margin: 0 auto;
 }
 
@@ -47,7 +47,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
-  text-align: center;
+  text-align:center;
   color: var(--color-white);
 }
 
@@ -55,7 +55,7 @@
   font-family: var(--font-family);
   border: 2px solid var(--color-wewak);
   border-radius: 100px;
-  padding: 10px 24px;
+  padding: 8px 24px;
   width: 100%;
   background: var(--color-wewak);
   display: flex;
@@ -82,7 +82,7 @@
 @media screen and (min-width: 768px) {
   .hero-section {
     background-image: url('/img/hero/hero-tablet.jpg');
-    padding: 325px 32px;
+    padding: 396px 32px 325px 32px;
   }
 
   .hero-content {
@@ -104,7 +104,7 @@
   .hero-section {
     background-image: url('/img/hero/hero-desktop.jpg');
     width: 1440px;
-    padding: 306px 0;
+    padding: 378px 0 306px 0;
   }
 
   .hero-content {
