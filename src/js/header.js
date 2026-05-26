@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       burgerClose.addEventListener('click', closeMenu);
     }
 
-    menu.querySelectorAll('.nav-link, .btn-action').forEach(link => {
+    menu.querySelectorAll('.nav-link, .link-action').forEach(link => {
       link.addEventListener('click', closeMenu);
     });
 

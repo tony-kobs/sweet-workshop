@@ -52,7 +52,7 @@ export function createPopularSlider(selector) {
       el: '.popular-pagination',
       clickable: true,
       dynamicBullets: true,
-      dynamicMainBullets: 4,
+      dynamicMainBullets: 1,
     },
     breakpoints: DEFAULT_BREAKPOINTS,
   });
@@ -74,7 +74,7 @@ export function createFeedbackSlider(selector, customEvents = {}) {
       el: '.feedback-pagination',
       clickable: true,
       dynamicBullets: true,
-      dynamicMainBullets: 4,
+      dynamicMainBullets: 1,
     },
     breakpoints: {
       320: { slidesPerView: 1, spaceBetween: DEFAULT_SPACE },

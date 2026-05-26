@@ -68,10 +68,11 @@
 
 .popular-pagination-wrapper {
   position: relative;
-  width: 100px;
+  width: 88px;
   height: 10px;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
 .popular-pagination.swiper-pagination {

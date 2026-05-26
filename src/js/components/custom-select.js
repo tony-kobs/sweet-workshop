@@ -37,21 +37,21 @@ export class CustomSelect {
       itemSelectText: '',
       shouldSort: false,
       classNames: {
-        containerOuter: ['choices', 'sel-wrap'],
-        containerInner: ['choices__inner', 'sel-box'],
+        containerOuter: ['choices'],
+        containerInner: ['choices__inner'],
         list: ['choices__list'],
         listItems: ['choices__list--multiple'],
         listSingle: ['choices__list--single'],
-        listDropdown: ['choices__list--dropdown', 'sel-dropdown'],
+        listDropdown: ['choices__list--dropdown'],
         item: ['choices__item'],
         itemSelectable: ['choices__item--selectable'],
         selectedState: ['is-selected'],
-        placeholder: ['choices__placeholder', 'sel-placeholder'],
+        placeholder: ['choices__placeholder'],
       },
     });
 
-    
     const inner = this.container.querySelector('.choices__inner');
+
     inner.insertAdjacentHTML(
       'beforeend',
       `<span class="sel-chevron" aria-hidden="true">
@@ -61,11 +61,29 @@ export class CustomSelect {
       </span>`
     );
 
+    const choicesContainer = this.container.querySelector('.choices');
+
+    if (this._choices.getValue(true) !== 'all') {
+      choicesContainer.classList.add('selected-value');
+    }
+
     select.addEventListener('change', () => {
       const val = this._choices.getValue(true);
-      const label = this.options.find(o => o.value === val)?.label ?? '';
+
+      const label =
+        this.options.find(o => o.value === val)?.label ?? '';
+
       this.selected = { value: val, label };
-      if (this.onChange) this.onChange(val, label);
+
+      if (val === 'all') {
+        choicesContainer.classList.remove('selected-value');
+      } else {
+        choicesContainer.classList.add('selected-value');
+      }
+
+      if (this.onChange) {
+        this.onChange(val, label);
+      }
     });
   }
 
@@ -75,12 +93,27 @@ export class CustomSelect {
 
   setValue(value) {
     this._choices.setChoiceByValue(value);
-    const label = this.options.find(o => o.value === value)?.label ?? '';
+
+    const label =
+      this.options.find(o => o.value === value)?.label ?? '';
+
     this.selected = { value, label };
+
+    const choicesContainer = this.container.querySelector('.choices');
+
+    if (value === 'all') {
+      choicesContainer.classList.remove('selected-value');
+    } else {
+      choicesContainer.classList.add('selected-value');
+    }
   }
 
   reset() {
     this._choices.setChoiceByValue('');
     this.selected = null;
+
+    const choicesContainer = this.container.querySelector('.choices');
+
+    choicesContainer.classList.remove('selected-value');
   }
 }
