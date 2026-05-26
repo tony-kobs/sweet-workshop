@@ -3,8 +3,7 @@ import { showLoader, hideLoader } from './utils/loader.js';
 import { showErrorToast } from './utils/toast.js';
 import iconsUrl from '../img/icons.svg';
 import { CustomSelect } from './components/custom-select.js';
-import { openDessertModal }
-  from './dessert-modal.js';
+import { openDessertModal } from './dessert-modal.js';
 
 let mobileSelect = null;
 
@@ -138,6 +137,25 @@ document.addEventListener('click', e => {
   console.log(id);
   openDessertModal(id);
 });
+
+// Після всіх існуючих addEventListener
+
+const desktopMediaQuery = window.matchMedia('(min-width: 1440px)');
+
+function syncCategoryState() {
+  if (desktopMediaQuery.matches) {
+    // Перехід на десктоп — синхронізуємо radio з поточною категорією
+    const radio = categoryDesktop.querySelector(
+      `input[value="${currentCategory}"]`
+    );
+    if (radio) radio.checked = true;
+  } else {
+    // Перехід на планшет/мобайл — синхронізуємо select з поточною категорією
+    if (mobileSelect) mobileSelect.setValue(currentCategory);
+  }
+}
+
+desktopMediaQuery.addEventListener('change', syncCategoryState);
 
 async function init() {
   try {

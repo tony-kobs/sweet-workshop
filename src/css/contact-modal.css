@@ -17,6 +17,11 @@
   padding: 64px 20px;
   width: 100%;
   background-color: var(--color-scheme-1-background);
+  max-height: calc(100dvh - 64px);
+  overflow-y: auto;
+
+  overflow-x: hidden;
+  cursor: grab;
 }
 .modal-order-close-btn {
   position: absolute;
@@ -64,6 +69,7 @@
   border-radius: 12px;
   padding: 8px 12px;
   height: 40px;
+  background: transparent;
 }
 .modal-order-input::placeholder {
   font-family: 'Work Sans', sans-serif;
@@ -102,7 +108,7 @@
   color: var(--color-scheme-1-text);
 }
 .modal-order-submit-btn {
-  border: 1px solid var(--color-wewak);
+  border: 2px solid var(--color-wewak);
   border-radius: 100px;
   padding: 10px 24px;
   width: 100%;
@@ -125,7 +131,7 @@
   background: var(--color-wewak-light);
 }
 .modal-order-submit-btn:disabled {
-  border: 1px solid var(--color-wewak);
+  border: 2px solid var(--color-wewak);
   background: var(--color-wewak);
   opacity: 0.3;
 }

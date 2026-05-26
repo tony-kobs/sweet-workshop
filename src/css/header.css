@@ -66,7 +66,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 335px;
+  max-width: 375px;
   margin-bottom: 48px;
 }
 
@@ -84,8 +84,6 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  max-width: 335px;
-  margin: 0 auto;
   gap: 32px;
 }
 
@@ -155,7 +153,16 @@
   background-color: var(--color-wewak-light);
 }
 
+.nav-menu-overlay .container {
+  width: 100%;
+  padding: 0;
+}
+
 @media (min-width: 768px) {
+  .nav-menu-overlay {
+    display: none;
+  }
+
   .header-container {
     max-width: 768px;
     padding: 20px 32px;
