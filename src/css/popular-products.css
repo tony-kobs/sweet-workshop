@@ -66,14 +66,22 @@
 }
 
 
-.popular-pagination.swiper-pagination {
-  position: static;
+.popular-pagination-wrapper {
+  position: relative;
+  width: 88px;
+  height: 10px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
-  width: auto;
+  overflow: hidden;
 }
+
+.popular-pagination.swiper-pagination {
+  overflow: visible !important;
+}
+
+
+
+
 
 
 
@@ -81,6 +89,7 @@
 .popular-nav-buttons {
   display: flex;
   gap: 16px;
+  margin-left: auto;
 }
 
 .popular-nav-btn-prev,
