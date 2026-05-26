@@ -21,12 +21,11 @@
 
   padding: 64px 20px;
 
-  background: var(--color-scheme-2-background);
+  background: var(--color-scheme-1-background);
   border-radius: 20px;
 
   display: flex;
   flex-direction: column;
-
   max-height: calc(100dvh - 64px);
 }
 
@@ -41,6 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
 
   border: none;
   background: transparent;
@@ -52,10 +52,6 @@
   cursor: pointer;
 
   transition: var(--transition);
-}
-
-.modal-close-btn:hover {
-  opacity: 0.7;
 }
 
 .modal-content {

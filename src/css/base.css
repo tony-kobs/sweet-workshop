@@ -91,6 +91,8 @@ h2 {
 }
 
 .close-icon {
+  width: 24px;
+  height: 24px;
   fill: var(--color-scheme-1-text);
   stroke-width: 1px;
   stroke: var(--color-scheme-1-text);
@@ -99,4 +101,5 @@ h2 {
 
 .close-icon:hover {
   transform: rotate(180deg);
+  opacity: 0.7;
 }
