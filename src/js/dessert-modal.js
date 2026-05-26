@@ -4,18 +4,6 @@ import { generateStarsTemplate } from './utils/stars.js';
 import { openOrderModal } from './contact-modal.js';
 import iconsUrl from '../img/icons.svg';
 
-function renderStars(rate) {
-  return Array(5)
-    .fill('')
-    .map(
-      (_, i) => `
-        <span class="${i < rate ? 'star filled' : 'star'}">
-          ★
-        </span>
-      `
-    )
-    .join('');
-}
 
 export async function openDessertModal(id) {
 
@@ -63,6 +51,9 @@ export async function openDessertModal(id) {
     unlockScroll();
 
     document.removeEventListener('keydown', handleEsc);
+    backdrop.removeEventListener('click', handleBackdrop);
+    closeBtn.removeEventListener('click', closeModal);
+
   }
 
   function handleEsc(e) {
@@ -70,14 +61,15 @@ export async function openDessertModal(id) {
       closeModal();
     }
   }
-
-  document.addEventListener('keydown', handleEsc);
-
-  backdrop.addEventListener('click', e => {
+  const handleBackdrop = (e) => {
     if (e.target === backdrop) {
       closeModal();
     }
-  });
+  }
+
+  document.addEventListener('keydown', handleEsc);
+
+  backdrop.addEventListener('click', handleBackdrop);
 
   closeBtn.addEventListener('click', closeModal);
 

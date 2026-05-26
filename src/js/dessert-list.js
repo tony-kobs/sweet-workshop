@@ -134,7 +134,6 @@ document.addEventListener('click', e => {
   const btn = e.target.closest('.dessert-modal-btn');
   if (!btn) return;
   const id = btn.dataset.id;
-  console.log(id);
   openDessertModal(id);
 });
 
