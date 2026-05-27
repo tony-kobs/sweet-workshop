@@ -1,7 +1,8 @@
+import './js/utils/reveal.js';
 import Swiper from 'swiper';
 import 'swiper/css';
-import './js/header.js'
-import './js/popular-products.js'
+import './js/header.js';
+import './js/popular-products.js';
 
 import './js/dessert-list.js';
 import './js/about-us.js';
@@ -10,4 +11,3 @@ import './js/feedback-section.js';
 import { initFaqAccordion } from './js/faq-section';
 import './js/faq-section.js';
 initFaqAccordion();
-
