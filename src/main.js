@@ -1,4 +1,3 @@
-import './js/utils/reveal.js';
 import Swiper from 'swiper';
 import 'swiper/css';
 import './js/header.js';
