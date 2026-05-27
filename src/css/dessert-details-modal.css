@@ -45,13 +45,7 @@
   border: none;
   background: transparent;
 
-  fill: var(--color-white);
-  stroke-width: 1px;
-  stroke: var(--color-scheme-1-text);
-
   cursor: pointer;
-
-  transition: var(--transition);
 }
 
 .modal-content {
@@ -151,17 +145,19 @@
   line-height: 1.5;
   color: var(--color-neutral-darkest);
 
-  transition: var(--transition);
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
 }
 
 .order-btn:hover,
 .order-btn:focus {
-  border: 2px solid var(--color-neutral-darkest);
+  border-color: var(--color-neutral-darkest);
   background-color: transparent;
 }
 
 .order-btn:active {
-  border: 2px solid var(--color-neutral-darkest);
+  border-color: var(--color-neutral-darkest);
   background: var(--color-wewak-light);
 }
 

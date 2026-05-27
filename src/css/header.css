@@ -50,7 +50,9 @@
   left: 0;
   opacity: 0;
   visibility: hidden;
-  transition: var(--transition);
+  transition:
+    opacity var(--transition),
+    visibility var(--transition);
 }
 
 .nav-menu-overlay.open {
@@ -91,7 +93,7 @@
   line-height: 1.5;
   color: var(--color-scheme-1-text);
   cursor: pointer;
-  transition: var(--transition);
+  transition: transform var(--transition);
   position: relative;
   padding-bottom: 2px;
 }
@@ -105,7 +107,11 @@
   height: 2px;
   background-color: var(--color-neutral-darkest);
   transform: scaleX(0);
-  transition:var(--transition);
+  transition:
+    transform var(--transition),
+    color var(--transition),
+    opacity var(--transition),
+    background-color var(--transition);
 }
 
 .nav-menu-overlay .nav-link:hover::after,
@@ -135,17 +141,19 @@
   padding: 8px 20px;
   margin: 46px auto 0 auto;
   cursor: pointer;
-  transition: var(--transition);
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
 }
 
 .nav-menu-overlay .link-action:hover,
 .nav-menu-overlay .link-action:focus {
-  border: 2px solid var(--color-neutral-darkest);
+  border-color: var(--color-neutral-darkest);
   background-color: transparent;
 }
 
 .nav-menu-overlay .link-action:active {
-  border: 2px solid var(--color-neutral-darkest);
+  border-color: var(--color-neutral-darkest);
   background-color: var(--color-wewak-light);
 }
 
@@ -201,7 +209,11 @@
     height: 2px;
     background-color: var(--color-neutral-darkest);
     transform: scaleX(0);
-    transition: var(--transition);
+    transition:
+      transform var(--transition),
+      color var(--transition),
+      opacity var(--transition),
+      background-color var(--transition);
   }
 
   .nav-link:hover::after,
@@ -229,17 +241,19 @@
     border-radius: 100px;
     padding: 8px 20px;
     cursor: pointer;
-    transition: var(--transition);
+    transition:
+      border-color var(--transition),
+      background-color var(--transition);
   }
 
   .link-action:hover,
   .link-action:focus {
-    border: 2px solid var(--color-neutral-darkest);
+    border-color: var(--color-neutral-darkest);
     background-color: transparent;
   }
 
   .link-action:active {
-    border: 2px solid var(--color-neutral-darkest);
+    border-color: var(--color-neutral-darkest);
     background-color: var(--color-wewak-light);
   }
 }

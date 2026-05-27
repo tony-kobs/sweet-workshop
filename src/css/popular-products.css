@@ -93,7 +93,11 @@
   background-color: transparent;
   color: var(--color-neutral-darkest);
   cursor: pointer;
-  transition: var(--transition);
+  transition:
+    background-color var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
 }
 
 .popular-nav-btn-prev svg,

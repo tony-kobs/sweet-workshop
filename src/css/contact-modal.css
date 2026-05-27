@@ -8,14 +8,13 @@
   padding: 64px 20px;
   /* padding-bottom: 0; */
   background: rgba(0, 0, 0, 0.25);
-
 }
 .modal-order {
   position: relative;
   display: flex;
   flex-direction: column;
-    padding: 64px 20px;
-max-height: calc(100dvh - 64px);
+  padding: 64px 20px;
+  max-height: calc(100dvh - 64px);
   border-radius: 16px;
   width: 100%;
   background-color: var(--color-scheme-1-background);
@@ -37,10 +36,10 @@ max-height: calc(100dvh - 64px);
   stroke: var(--color-scheme-1-text);
 }
 
-.modal-order-content{
+.modal-order-content {
   display: flex;
   flex-direction: column;
-    /* padding: 64px 20px; */
+  /* padding: 64px 20px; */
 
   gap: 48px;
   width: 100%;
@@ -70,7 +69,6 @@ max-height: calc(100dvh - 64px);
   align-items: center;
   align-self: center;
   width: 100%;
-
 }
 .modal-order-form-input-block {
   display: flex;
@@ -87,8 +85,7 @@ max-height: calc(100dvh - 64px);
   padding: 8px 12px;
   height: 40px;
   background: transparent;
-  transition: var(--transition);
-
+  transition: border-color var(--transition);
 }
 .modal-order-input::placeholder {
   font-family: 'Work Sans', sans-serif;
@@ -110,8 +107,9 @@ max-height: calc(100dvh - 64px);
   background: var(--opacity-transparent);
   resize: vertical;
   overflow-x: hidden;
-  transition: var(--transition);
-
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
 }
 .modal-order-textarea::placeholder {
   font-family: 'Work Sans', sans-serif;
@@ -122,9 +120,8 @@ max-height: calc(100dvh - 64px);
 .modal-order-input:focus,
 .modal-order-textarea:focus,
 .modal-order-input:hover,
-.modal-order-textarea:hover
-{
-  border: 2px solid var(--color-wewak);
+.modal-order-textarea:hover {
+  border-color: 2px solid var(--color-wewak);
   background-color: var(--color-scheme-1-background);
 }
 .modal-order-label {
@@ -147,7 +144,9 @@ max-height: calc(100dvh - 64px);
   font-size: 16px;
   line-height: 1.5;
   background: var(--color-wewak);
-  transition: var(--transition);
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
 }
 .modal-order-submit-btn:hover,
 .modal-order-submit-btn:focus {

@@ -78,7 +78,12 @@
   border: 2px solid var(--color-scheme-1-border);
   color: var(--text-color);
   cursor: pointer;
-  transition: var(--transition);
+  transition:
+    transform var(--transition),
+    background-color var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
   outline: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   position: absolute;
@@ -97,7 +102,7 @@
 
 .about-us-nav-btn:hover,
 .about-us-nav-btn:focus {
-  background: var(--color-wewak);
+  background-color: var(--color-wewak);
   color: var(--color-scheme-1-text);
   border-color: var(--color-scheme-1-hover);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);

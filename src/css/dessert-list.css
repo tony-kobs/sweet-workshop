@@ -93,22 +93,25 @@
   width: 44px;
   height: 44px;
 
-  transition: var(--transition);
+  transition:
+    border-color var(--transition),
+    background-color var(--transition),
+    opacity var(--transition);
 }
 
 .dessert-modal-btn:hover,
 .dessert-modal-btn:focus {
-  border: 2px solid var(--color-neutral-darkest);
-  background: var(--color-wewak);
+  border-color: var(--color-neutral-darkest);
+  background-color: var(--color-wewak);
 }
 
 .dessert-modal-btn:active {
-  border: 2px solid var(--color-neutral-darkest);
-  background: var(--color-wewak-dark);
+  border-color: var(--color-neutral-darkest);
+  background-color: var(--color-wewak-dark);
 }
 
 .dessert-modal-btn:disabled {
-  border: 2px solid var(--color-neutral-darkest);
+  border-color: var(--color-neutral-darkest);
   opacity: 0.3;
 }
 
@@ -138,23 +141,26 @@
   line-height: 1.5;
   color: var(--color-neutral-darkest);
 
-  transition: var(--transition);
+  transition:
+    border-color var(--transition),
+    background-color var(--transition),
+    opacity var(--transition);
 }
 
 .js-load-more:hover,
 .js-load-more:focus {
-  border: 2px solid var(--color-neutral-darkest);
+  border-color: var(--color-neutral-darkest);
   background-color: transparent;
 }
 
 .js-load-more:active {
-  border: 2px solid var(--color-neutral-darkest);
-  background: var(--color-wewak-light);
+  border-color: var(--color-neutral-darkest);
+  background-color: var(--color-wewak-light);
 }
 
 .js-load-more:disabled {
-  border: 2px solid var(--color-wewak);
-  background: var(--color-wewak);
+  border-color: var(--color-wewak);
+  background-color: var(--color-wewak);
   opacity: 0.3;
 }
 
@@ -263,14 +269,17 @@
     cursor: pointer;
     font-weight: 500;
     font-size: 16px;
-    transition: var(--transition);
+    transition:
+      background-color var(--transition),
+      border-color var(--transition),
+      opacity var(--transition);
     user-select: none;
     white-space: nowrap;
   }
 
   .category-btn:has(input:checked) {
-    background: var(--color-wewak-dark);
-    border: 2px solid var(--color-neutral-darkest);
+    background-color: var(--color-wewak-dark);
+    border-color: var(--color-neutral-darkest);
   }
 
   .category-btn:hover,

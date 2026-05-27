@@ -1,4 +1,3 @@
-
 .choices[data-type*='select-one']::after,
 .choices[data-type*='select-one'].is-open::after {
   display: none;
@@ -17,7 +16,10 @@
   font-size: 16px;
   line-height: 1.5;
   color: var(--color-neutral);
-  transition: var(--transition);
+  transition:
+    border-color var(--transition),
+    background-color var(--transition),
+    color var(--transition);
 }
 
 .choices__inner:hover,
@@ -49,7 +51,7 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  transition: var(--transition);
+  transition: fill var(--transition);
 }
 
 .select-icon {
