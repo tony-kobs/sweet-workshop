@@ -4,9 +4,7 @@ import { generateStarsTemplate } from './utils/stars.js';
 import { openOrderModal } from './contact-modal.js';
 import iconsUrl from '../img/icons.svg';
 
-
 export async function openDessertModal(id) {
-
   if (document.querySelector('.modal-backdrop')) {
     return;
   }
@@ -41,19 +39,29 @@ export async function openDessertModal(id) {
 
   const backdrop = document.querySelector('.modal-backdrop');
 
+  requestAnimationFrame(() => {
+    backdrop.classList.add('is-open');
+  });
+
   const modalContent = backdrop.querySelector('.modal-content');
 
   const closeBtn = backdrop.querySelector('.modal-close-btn');
 
   function closeModal() {
-    backdrop.remove();
+    backdrop.classList.remove('is-open');
 
-    unlockScroll();
+    backdrop.addEventListener(
+      'transitionend',
+      () => {
+        backdrop.remove();
+        unlockScroll();
+        document.removeEventListener('keydown', handleEsc);
+      },
+      { once: true }
+    );
 
-    document.removeEventListener('keydown', handleEsc);
-    backdrop.removeEventListener('click', handleBackdrop);
     closeBtn.removeEventListener('click', closeModal);
-
+    backdrop.removeEventListener('click', handleBackdrop);
   }
 
   function handleEsc(e) {
@@ -61,11 +69,11 @@ export async function openDessertModal(id) {
       closeModal();
     }
   }
-  const handleBackdrop = (e) => {
+  const handleBackdrop = e => {
     if (e.target === backdrop) {
       closeModal();
     }
-  }
+  };
 
   document.addEventListener('keydown', handleEsc);
 
@@ -81,9 +89,10 @@ export async function openDessertModal(id) {
     src="${data.image}"
     alt="${data.name}"
     class="modal-image"
+    data-aos="fade-right" data-aos-delay="200"
   />
 
-  <div class="modal-info">
+  <div class="modal-info" data-aos="fade-left" data-aos-delay="400">
 
     <h2 class="modal-title">
       ${data.name}

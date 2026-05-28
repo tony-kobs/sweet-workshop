@@ -8,6 +8,12 @@
   padding: 64px 20px;
   /* padding-bottom: 0; */
   background: rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.modal-order-overlay.is-open {
+  opacity: 1;
 }
 .modal-order {
   position: relative;
@@ -19,6 +25,16 @@
   width: 100%;
   background-color: var(--color-scheme-1-background);
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(-30px) scale(0.97);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.modal-order-overlay.is-open .modal-order {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .modal-order-close-btn {
