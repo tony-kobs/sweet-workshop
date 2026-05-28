@@ -67,7 +67,7 @@
   border-radius: 6px;
   padding: 8px 12px;
   background: var(--color-ice-cold-lighter);
-  z-index: 99;
+  z-index: 199;
   margin-top: 2px !important;
   box-shadow: none;
   overflow: clip;
