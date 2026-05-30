@@ -1,5 +1,5 @@
 .header {
-  width: 100%;
+  width: calc(100% - var(--scrollbar-width));
   background: var(--color-scheme-1-background);
   position: fixed;
   top: 0;
