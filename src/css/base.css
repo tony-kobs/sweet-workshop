@@ -1,4 +1,5 @@
 :root {
+  --scrollbar-width: 0px;
   scroll-behavior: smooth;
   --color-scheme-1-background: var(--color-ice-cold-lightest);
   --color-neutral-darkest: #080c0c;
